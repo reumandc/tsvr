@@ -1,0 +1,17 @@
+Package: tsvr
+Version: 0.0.1
+Type: Package
+Title: Timescale-specific variance ratio
+Authors@R: c(
+    person("Daniel C.", "Reuman", email = "reuman@ku.edu", role = c("aut", "cre", "cph")),
+    person("Lei", "Zhao", email = "leizhao@ku.edu", role=c("aut", "cre", "cph"))
+    )
+Description: The package contains tools for timescale decomposition of the variance ratio
+License: GPL (>=3)
+Encoding: UTF-8
+LazyData: true
+Suggests: testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 6.0.1
