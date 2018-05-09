@@ -28,6 +28,9 @@
 #' 
 #' @export
 
+#***DAN: review this with Lei. I thought we did not have a fs version of LdM that made sense, what is
+#this LdM functionality and does it make sense to include it?
+
 vrf<-function(X, method="classic", f.flag="fd", fig=FALSE){
   
   #Compute all the cospectrum and arrange them into
@@ -41,13 +44,22 @@ vrf<-function(X, method="classic", f.flag="fd", fig=FALSE){
   
   #get the denominator
   if(method=="LdM"){
-    if(f.flag=="fs"){
+    if(f.flag=="fs")
+    {
       D<-(colSums(sqrt(apply(cospec$cospectrum, 3, diag))))^2
-    }else{D<-(sum(sqrt(apply(X, MARGIN=1, var))))^2}
-  }else{
-    if(f.flag=="fs"){
+    }else
+    {
+      D<-(sum(sqrt(apply(X, MARGIN=1, var))))^2
+    }
+  }else
+  {
+    if(f.flag=="fs")
+    {
       D<-colSums(apply(cospec$cospectrum, 3, diag))
-    }else{D<-sum(apply(X, MARGIN=1, var))}
+    }else
+    {
+      D<-sum(apply(X, MARGIN=1, var))
+    }
   }
   
   vr.f <- vr.f/D

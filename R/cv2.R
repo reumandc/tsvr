@@ -1,14 +1,14 @@
-#' Calculate the variability partitioning 
+#' Calculates various measures of population and community variability 
 #' 
-#' This function is used to calculate the variability partitioning.
+#' Calculates various measures of population and community variability 
 #' 
-#' @param X a matrix with counts or densities arranged in species (or other scale) by years.
-#' @param type If \code{"pop"} (default), calculate population CV^2. If \code{"com"}, calculate community CV^2.
+#' @param X a matrix with counts or densities arranged in species by time step.
+#' @param type If \code{pop}, calculate CVpop2. If \code{com}, calculate CVcom2. If \code{comip},
+#' calculate CVcomip2.
 #'
-#' @return \code{cv2} return the value of population or community variability.
+#' @return \code{cv2} returns the value of population or community variability.
 #' 
-#' @author Lei Zhao, \email{leizhao@@ku.edu}; Daniel Reuman, \email{reuman@@ku.edu}; Shaopeng Wang, \email{shaopeng.wang@idiv.de}
-#' @references (Our draft)
+#' @author Lei Zhao, \email{leizhao@@ku.edu}; Daniel Reuman, \email{reuman@@ku.edu}; Shaopeng Wang, \email{shaopeng.wang@@idiv.de}
 #' 
 #' @examples
 #' X<-matrix(runif(200,1,100), 10, 20)
@@ -19,22 +19,31 @@
 #' 
 #' @export
 
-cv2 <- function(X, type="pop"){
-  
-  X<-X[rowSums(X)>0, ]  # delete species whose counts are zeros across all the years
+cv2 <- function(X, type){
+  errcheck_data(X,"cv2")
   
   meanSp <- rowMeans(X)
   covSp <- cov(t(X))
   mean.comm <- sum(meanSp)
   
-  if(type=="com"){     # Gamma variability 
+  if(type=="com")
+  {     
     var.comm <- sum(covSp)
     cv2 <- var.comm/mean.comm^2
-  }else{               # Alpha variability
-    var.sp <- sum(diag(covSp))
-    cv2<-var.sp/mean.comm^2
-    }
-
-  return(cv2)
+    return(cv2)
+  }
+  if (type=="comip")
+  {               
+    var.comip <- sum(diag(covSp))
+    cv2<-var.comip/mean.comm^2
+    return(cv2)
+  }
+  if (type=="pop")
+  {
+    var.pop<-(sum(sqrt(diag(covSp))))^2
+    cv2<-var.pop/mean.comm^2
+    return(cv2)
+  }
+  stop("Error in cv2: type must be com, comip, or pop")
 }
 

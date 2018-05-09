@@ -13,7 +13,7 @@
 #' 
 #' @author Shaopeng Wang, \email{shaopeng.wang@idiv.de}; Lei Zhao, \email{leizhao@@ku.edu}; Daniel Reuman, \email{reuman@@ku.edu}
 #' @references Wang S. & Loreau M. (2016). Biodiversity and ecosystem stability across scales in metacommunities. ECOL LETT, 19, 510-518.
-#' 
+#' ***DAN: why is this the reference? we don't use their measure, and they don't use a freq-specific approach
 #' @examples
 #' X<-matrix(runif(200,1,100), 10, 20)
 #' rownames(X)<-letters[1:10]
@@ -26,17 +26,22 @@
 cv2f <- function(X, type="pop", fig=FALSE){
   
   X<-X[rowSums(X)>0, ]  # delete species whose counts are zeros across all the years
-  
+  #***DAN: what about NAs?
   meanSp <- rowMeans(X)
   cosp<-cospect(X)
   freq<-cosp[[1]][-1]
   covSp <- cosp[[2]][,,-1]  # cospectrum
+  #***DAN: need comment on why we throw away the first one
+  #***DAN: need unit tests which test that all appropriate sums of fs quantities addup to the classic quantities 
   mean.comm <- sum(meanSp)
   
-  if(type=="com"){     # Gamma variability: frequency dependent 
+  if(type=="com")
+  {     # Gamma variability: frequency dependent 
     var.comm <- apply(covSp, 3, sum)
+    #***DAN: wwould be more efficient to jst calculate the sum and then the cospect of that in this case
     cv2.f <- var.comm/mean.comm^2
-  }else{               # Alpha variability: frequency dependent
+  }else
+  {               # Alpha variability: frequency dependent
     cv2.f <- apply(covSp, 3, function(x){
       var.sp <- sum(diag(x))
       cv.pop <- var.sp/mean.comm^2   ##<<<<<------- notice this defination is new

@@ -22,8 +22,9 @@
 
 cospect<-function(X)
 {
+  #***DAN: can this function handle vector input? (the one-species case, useful, e.g., for passing the total timeseries to get the cospectrum of that)
   tmp <- X[1,]
-  tslength<-length(tmp)
+  tslength<-length(tmp) #***DAN: not best way to get the length
   freqlen<-seq(from=0,by=1/tslength,length.out=tslength)
   
   cosp <- array(NA,dim=c(nrow(X), nrow(X), length(freqlen)))
