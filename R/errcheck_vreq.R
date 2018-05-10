@@ -9,7 +9,6 @@
 #' 
 #' @author Daniel Reuman, \email{reuman@@ku.edu}
 
-
 errcheck_vreq<-function(com,comnull,vr)
 {
   #numeric, single numbers, no NAs

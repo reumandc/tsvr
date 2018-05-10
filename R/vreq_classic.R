@@ -1,4 +1,4 @@
-#' Creator function of \code{vreq_classic} S3 class.
+#' Creator function of \code{vreq_classic} S3 class
 #' 
 #' The \code{vreq_classic} (variance ratio equation, classic variance ratio) class is for 
 #' storing equations based on the classic variance ratio. Inherits from the \code{vreq} class,
@@ -6,7 +6,7 @@
 #'
 #' @param X a matrix with counts or densities arranged in species by years
 #' 
-#' @return \code{vreq_classic} returns a \code{vreq} object. Slots are:
+#' @return \code{vreq_classic} returns a \code{vreq_classic} object. Slots are:
 #' \item{com} the squared community CV, CVcom2
 #' \item{comnull} CVcomip2
 #' \item{vr} the classic variance ratio

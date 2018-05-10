@@ -1,24 +1,23 @@
-#' Compute the frequency-specific or frequency-decomposition version of the variance ratio
+#' Compute the frequency-specific variance ratio or the frequency decomposition of the 
+#' variance ratio
 #' 
-#' This function is used to compute the frequency-specific or frequency-decomposition version of variance ratio
-#' for a community in a single plot or for a single species 
-#' in multiple plots. It is similar to \code{\link{vr}}, but use cospectrum instead of covariance.
+#' This function computes the frequency-specific variance ratio or the frequency-
+#' decomposition of the variance ratio for a community in a single plot. It is similar 
+#' to \code{\link{vr}}, but uses the cospectrum instead of the covariance.
 #' 
-#' @param X a matrix with counts or densities arranged in species (or other scale) by years
-#' @param method If \code{"classic"} (default), use the classical method. 
-#' If \code{"LdM"}, use the Loreau-Mazancourt method (see reference).
-#' @param f.flag If \code{"fd"} (default), frequency-decomposition of variance ratio, where only numerator is frequency specific.
-#' If \code{"fs"},  frequency-specific variance ratio, where both numerator and denominator are frequency specific.
-#' @param fig logical. If \code{FALSE} (default), do not output the figure. If \code{TRUE}, 
-#' plot the figure with x-axis frequency and y-axis variance ratio.
+#' @param X a matrix with counts or densities arranged in species by time step
+#' @param method If \code{classic}, uses the classical variance ratio. If \code{LdM}, uses 
+#' the Loreau-Mazancourt method.
+#' @param flag If \code{fd}, gives the frequency decomposition of the variance ratio, 
+#' where only numerator is made timescale specific. If \code{fs},  gives the frequency-specific 
+#' variance ratio, where both numerator and denominator are made frequency specific.
 #' 
-#' @return \code{vrf} return an object of list consisting of
-#' \item{frequency}{a vector from 0 to 1 (not include 0 and 1)}
-#' \item{vr.f}{a vector of frequency-specific or frequency-decomposition of VR}
+#' @return \code{vrf} returns a list consisting of
+#' \item{frequency}{a vector from 0 to 1 (not including 0 and 1)}
+#' \item{vr}{a vector of frequency-specific or frequency-decomposition of VR}
 #' 
 #' @author Lei Zhao, \email{leizhao@@ku.edu}; Daniel Reuman, \email{reuman@@ku.edu}
 #' 
-#' @references Loreau & Mazancourt, Species Synchrony and Its Drivers: Neutral and Nonneutral Community Dynamics in Fluctuating Environments. 2008, Am. Nat. 172(2)
 #' @examples
 #' X<-matrix(runif(200,1,100), 10, 20)
 #' rownames(X)<-letters[1:10]
@@ -28,10 +27,7 @@
 #' 
 #' @export
 
-#***DAN: review this with Lei. I thought we did not have a fs version of LdM that made sense, what is
-#this LdM functionality and does it make sense to include it?
-
-vrf<-function(X, method="classic", f.flag="fd", fig=FALSE){
+vrf<-function(X, method, flag){
   
   #Compute all the cospectrum and arrange them into
   #a 3D array, species by species by frequency 
@@ -40,11 +36,11 @@ vrf<-function(X, method="classic", f.flag="fd", fig=FALSE){
   cospec$frequency<-cospec$frequency[2:lenfreq]
   cospec$cospectrum<-cospec$cospectrum[,,2:lenfreq]
   
-  vr.f <- apply(cospec$cospectrum, MARGIN=c(3), sum,na.rm=T)
+  vr.f <- apply(X=cospec$cospectrum, MARGIN=3, FUN=sum,na.rm=T)
   
   #get the denominator
   if(method=="LdM"){
-    if(f.flag=="fs")
+    if(flag=="fs")
     {
       D<-(colSums(sqrt(apply(cospec$cospectrum, 3, diag))))^2
     }else
@@ -53,7 +49,7 @@ vrf<-function(X, method="classic", f.flag="fd", fig=FALSE){
     }
   }else
   {
-    if(f.flag=="fs")
+    if(flag=="fs")
     {
       D<-colSums(apply(cospec$cospectrum, 3, diag))
     }else
@@ -63,18 +59,7 @@ vrf<-function(X, method="classic", f.flag="fd", fig=FALSE){
   }
   
   vr.f <- vr.f/D
-  vr.f[D<1e-10]<-0    # should I add this?
+  #vr.f[D<1e-10]<-0    # should I add this? ***Dan does not see what for, taking it out for now
   
-  if(fig){
-    if(f.flag=="fs"){
-      plot(cospec$frequency, vr.f, xlab="frequency (cycles/year)", ylab="frequency specific VR",
-           xlim=c(0,1), ylim=c(0, max(vr.f)), typ="l")
-    }else{plot(cospec$frequency, vr.f, xlab="frequency (cycles/year)", ylab="frequency decomposition of VR",
-               xlim=c(0,1), ylim=c(0, max(vr.f)), typ="l")
-      text(0.5,max(vr.f),labels=paste("VR=",as.character(round(sum(vr.f),4)),sep=''),adj=c(1.05,-.4))}
-    lines(c(.5,.5),c(0,max(vr.f)),lty='dotted')
-    rect(.5,-max(vr.f),2,2*max(vr.f),density=NA,col=rgb(0,0,0,alpha=0.2))
-  }
-  
-  return(list(frequency=cospec$frequency, vr.f=vr.f))
+  return(list(frequency=cospec$frequency, vr=vr.f))
 }

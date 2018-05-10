@@ -8,7 +8,7 @@ set_com<-function(obj,newval)
 
 set_com.default<-function(obj,newval)
 {
-  stop("Error in set_com: set_com only defined for class vreq")
+  stop("Error in set_com: set_com only defined for classes vreq and tsvreq")
 }
 
 set_com.vreq<-function(obj,newval)
@@ -25,7 +25,7 @@ set_comnull<-function(obj,newval)
 
 set_comnull.default<-function(obj,newval)
 {
-  stop("Error in set_comnull: set_comnull only defined for class vreq")
+  stop("Error in set_comnull: set_comnull only defined for classes vreq and tsvreq")
 }
 
 set_comnull.vreq<-function(obj,newval)
@@ -42,7 +42,7 @@ set_vr<-function(obj,newval)
 
 set_vr.default<-function(obj,newval)
 {
-  stop("Error in set_vr: set_vr only defined for class vreq")
+  stop("Error in set_vr: set_vr only defined for classes vreq and tsvreq")
 }
 
 set_vr.vreq<-function(obj,newval)
@@ -60,7 +60,7 @@ get_com<-function(obj)
 
 get_com.default<-function(obj)
 {
-  stop("Error in get_com: get_com only defined for class vreq")
+  stop("Error in get_com: get_com only defined for classes vreq and tsvreq")
 }
 
 get_com.vreq<-function(obj)
@@ -75,7 +75,7 @@ get_comnull<-function(obj)
 
 get_comnull.default<-function(obj)
 {
-  stop("Error in get_comnull: get_comnull only defined for class vreq")
+  stop("Error in get_comnull: get_comnull only defined for classes vreq and tsvreq")
 }
 
 get_comnull.vreq<-function(obj)
