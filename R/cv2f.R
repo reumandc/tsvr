@@ -3,8 +3,7 @@
 #' This function is used to calculate the variability partitioning.
 #' 
 #' @param X a matrix with counts or densities arranged in species by time step.
-#' @param type If \code{pop}, calculate a frequency-specific CVpop2. If \code{com}, 
-#' calculate a frequency-specific CVcom2. If \code{comip}, calculate a frequency-
+#' @param type If \code{com}, calculate a frequency-specific CVcom2. If \code{comip}, calculate a frequency-
 #' specific CVcomip2. 
 #'
 #' @return \code{cv2f} return an object of type list consisting of
@@ -18,7 +17,7 @@
 #' rownames(X)<-letters[1:10]
 #' colnames(X)<-1991:2010
 #' 
-#' ans<-cv2f(X, type="com", fig=T)
+#' ans<-cv2f(X, type="com")
 #' 
 #' @export
 
@@ -46,10 +45,6 @@ cv2f <- function(X, type){
     })
     return(list(frequency=freq,cv2=cv2))
   }
-  if ("pop")
-  {
-    #***DAN: do this
-    stop("Error in cv2f: type='pop' option not implemented yet")
-  }
-  stop("Error in cv2f: type must be com, comip, or pop")
+  
+  stop("Error in cv2f: type must be com, comip")
 }
