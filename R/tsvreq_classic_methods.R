@@ -1,4 +1,33 @@
+#Simple methods for the tsvreq_classic class
 
+#set methods - inherited
+#get methods - inherited
+
+summary.tsvreq_classic<-function(obj)
+{
+  print("Object of class tsvreq_classic:")
+  print("ts:")
+  print(ts)
+  print("com:")
+  print(com)
+  print("comnull:")
+  print(comnull)
+  print("tsvr:")
+  print(tsvr)
+  print("wts:")
+  print(wts)
+}
+
+print.tsvreq_classic<-function(obj)
+{
+  summary.tsvreq_classic(obj)  
+}
+
+#we need a plot method, code snippets cannibalized from elsewhere pasted below
+#plot.tsvreq_classic<-function(obj)
+#{
+#  
+#}
 
 
 

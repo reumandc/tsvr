@@ -1,6 +1,7 @@
 #Simple methods for the vreq class
 
-#value setting
+#value setting - throws and error because we do not want the user to change individual elements
+#as that will break the equation
 set_com<-function(obj,newval)
 {
   UseMethod("set_com",obj)
@@ -13,9 +14,7 @@ set_com.default<-function(obj,newval)
 
 set_com.vreq<-function(obj,newval)
 {
-  errcheck_vreq(newval,obj$comnull,obj$vr)
-  obj$com<-newval
-  return(obj)
+  stop("Error in set_com: vreq slots should not be changed individually")
 }
 
 set_comnull<-function(obj,newval)
@@ -30,9 +29,7 @@ set_comnull.default<-function(obj,newval)
 
 set_comnull.vreq<-function(obj,newval)
 {
-  errcheck_vreq(obj$com,newval,obj$vr)
-  obj$comnull<-newval
-  return(obj)
+  stop("Error in set_comnull: vreq slots should not be changed individually")
 }
 
 set_vr<-function(obj,newval)
@@ -47,9 +44,7 @@ set_vr.default<-function(obj,newval)
 
 set_vr.vreq<-function(obj,newval)
 {
-  errcheck_vreq(obj$com,obj$comnull,newval)
-  obj$vr<-newval
-  return(obj)
+  stop("Error in set_vr: vreq slots should not be changed individually")
 }
 
 #value getting

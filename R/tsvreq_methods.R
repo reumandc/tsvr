@@ -1,6 +1,7 @@
 #Simple methods for the tsvreq class
 
-#value setting
+#value setting - throws and error because we do not want the user to change individual elements
+#as that will break the equation
 set_ts<-function(obj,newval)
 {
   UseMethod("set_ts",obj)  
@@ -13,23 +14,17 @@ set_ts.default<-function(obj,newval)
 
 set_ts.tsvreq<-function(obj,newval)
 {
-  errcheck_tsvreq(newval,obj$com,obj$comnull,obj$tsvr,obj$wts)
-  obj$ts<-newval
-  return(obj)
+  stop("Error in set_ts: tsvreq slots should not be changed individually")
 }
 
 set_com.tsvreq<-function(obj,newval)
 {
-  errcheck_tsvreq(obj$ts,newval,obj$comnull,obj$tsvr,obj$wts)
-  obj$com<-newval
-  return(obj)
+  stop("Error in set_com: tsvreq slots should not be changed individually")
 }
 
 set_comnull.tsvreq<-function(obj,newval)
 {
-  errcheck_tsvreq(obj$ts,obj$com,newval,obj$tsvr,obj$wts)
-  obj$comnull<-newval
-  return(obj)
+  stop("Error in set_comnull: tsvreq slots should not be changed individually")
 }
 
 set_tsvr<-function(obj,newval)
@@ -44,9 +39,7 @@ set_tsvr.default<-function(obj,newval)
 
 set_tsvr.tsvreq<-function(obj,newval)
 {
-  errcheck_tsvreq(obj$ts,obj$com,obj$comnull,newval,obj$wts)
-  obj$tsvr<-newval
-  return(obj)
+  stop("Error in set_tsvr: tsvreq slots should not be changed individually")
 }
 
 #value getting

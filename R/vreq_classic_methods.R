@@ -1,23 +1,6 @@
 #Simple methods for the vreq_classic class
 
-#value setting - these just throw an error, since we do not want
-#individual components of a vreq_classic object changed as that breaks the
-#consistency among the components
-set_com.vreq_classic<-function(obj,newval)
-{
-  stop("Error in set_com: com should not be altered for a vreq_classic object")
-}
-
-set_comnull.vreq_classic<-function(obj,newval)
-{
-  stop("Error in set_comnull: comnull should not be altered for a vreq_classic object")
-}
-
-set_vr.vreq_classic<-function(obj,newval)
-{
-  stop("Error in set_vr: vr should not be altered for a vreq_classic object")
-}
-
+#value setting - not necessary, inherited from vreq class
 #value getting - not necessary, inherited from vreq class
 
 summary.vreq_classic<-function(obj)
