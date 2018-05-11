@@ -5,14 +5,11 @@
 
 summary.vreq_classic<-function(obj)
 {
-  print("Object of class vreq_classic - an equation using the classic variance ratio:")
-  print(paste0("CV_com^2: ",com))
-  print(paste0("CV_comip^2: ",comnull))
-  print(paste0("variance ratio: ",vr))
+  return(c(CVcom2=get_com(obj),CVcomip2=get_comnull(obj),Classic_vr=get_vr(obj)))
 }
 
 print.vreq_classic<-function(obj)
 {
-  summary.vreq_classic(obj)  
+  cat(paste0("Object of class vreq_classic:\n CVcom2: ",get_com(obj),"\n CVcomip2: ",get_comnull(obj),"\n classic vr: ",get_vr(obj)))
 }
 

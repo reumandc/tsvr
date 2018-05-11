@@ -4,6 +4,6 @@ change Shaopeng's email throughout
 
 add examples for everything
 
-
+I recently learned that class vectors go in a different order from what I thought made sense, and this will have implications for the methods of all derived classes. I fixed it for vreq_classic but no other derived classes yet
 
   

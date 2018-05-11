@@ -30,4 +30,7 @@ test_that("test the summary method",{
   expect_equal(out,c(com=2,comnull=1,vr=2))
 })
 
-#***DAN: need to test the print method somehow
+test_that("test the print method",{
+  inp<-vreq(com=2,comnull=1,vr=2)
+  expect_output(print(inp),"Object of class vreq:\n com: 2\n comnull: 1\n vr: 2",fixed=TRUE)
+})

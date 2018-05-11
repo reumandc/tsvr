@@ -100,10 +100,6 @@ summary.vreq<-function(obj)
 
 print.vreq<-function(obj)
 {
-  print("Object of class vreq:")
-  print(paste0("com: ",com))
-  print(paste0("comnull: ",comnull))
-  print(paste0("vr: ",vr))
-  summary.vreq(obj)  
+  cat(paste0("Object of class vreq:\n com: ",get_com(obj),"\n comnull: ",get_comnull(obj),"\n vr: ",get_vr(obj)))
 }
 
