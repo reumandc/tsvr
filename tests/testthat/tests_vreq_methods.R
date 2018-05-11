@@ -22,3 +22,12 @@ test_that("test the get methods",{
   expect_equal(get_comnull(h),1)
   expect_equal(get_vr(h),2)
 })
+
+test_that("test the summary method",{
+  inp<-vreq(com=2,comnull=1,vr=2)
+  out<-summary(inp)
+  expect_equal(names(out),c("com","comnull","vr"))
+  expect_equal(out,c(com=2,comnull=1,vr=2))
+})
+
+#***DAN: need to test the print method somehow
