@@ -26,7 +26,7 @@ tsvreq<-function(ts,com,comnull,tsvr,wts)
 {
   errcheck_tsvreq(ts,com,comnull,tsvr,wts)  
   res<-list(ts=ts,com=com,comnull=comnull,tsvr=tsvr,wts=wts)  
-  class(res)<-append(class(res),"tsvreq") 
+  class(res)<-c("tsvreq","list") 
   return(res)
 }
 

@@ -5,14 +5,10 @@
 
 summary.vreq_LdM<-function(obj)
 {
-  print("Object of class vreq_LdM - an equation using the Loreau-de Mazancourt variance ratio:")
-  print(paste0("CV_com^2: ",com))
-  print(paste0("CV_pop^2: ",comnull))
-  print(paste0("variance ratio: ",vr))
+  return(c(CVcom2=get_com(obj),CVpop2=get_comnull(obj),LdM_vr=get_vr(obj)))
 }
 
 print.vreq_LdM<-function(obj)
 {
-  summary.vreq_LdM(obj)  
+  cat(paste0("Object of class vreq_LdM:\n CVcom2: ",get_com(obj),"\n CVpop2: ",get_comnull(obj),"\n LdM vr: ",get_vr(obj)))
 }
-

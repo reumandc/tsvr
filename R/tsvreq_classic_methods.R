@@ -5,22 +5,17 @@
 
 summary.tsvreq_classic<-function(obj)
 {
-  print("Object of class tsvreq_classic:")
-  print("ts:")
-  print(ts)
-  print("com:")
-  print(com)
-  print("comnull:")
-  print(comnull)
-  print("tsvr:")
-  print(tsvr)
-  print("wts:")
-  print(wts)
+  return(list(ts=get_ts(obj),CVcom2=get_com(obj),CVcomip2=get_comnull(obj),Classic_vr=get_tsvr(obj),wts=get_wts(obj)))
 }
 
 print.tsvreq_classic<-function(obj)
 {
-  summary.tsvreq_classic(obj)  
+  cat(paste0("Object of class tsvreq_classic:\n ts: [",
+             paste(round(head(get_ts(obj)),3),collapse=','),",...]\n CVcom2: [",
+             paste(round(head(get_com(obj)),3),collapse=','),"...]\n CVcomip2: [",
+             paste(round(head(get_comnull(obj)),3),collapse=','),"...]\n classic vr: [",
+             paste(round(head(get_tsvr(obj)),3),collapse=','),"...]\n wts: [",
+             paste(round(head(get_wts(obj)),3),collapse=','),"...]"))
 }
 
 #we need a plot method, code snippets cannibalized from elsewhere pasted below

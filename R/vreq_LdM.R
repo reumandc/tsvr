@@ -24,6 +24,6 @@ vreq_LdM<-function(X)
   errcheck_vreq(com=CVcom2,comnull=CVpop2,vr=vr_LdM)
   
   result<-list(com=CVcom2,comnull=CVpop2,vr=vr_LdM)
-  class(result)<-append(class(result),c("vreq","vreq_LdM"))
+  class(result)<-c("vreq_LdM","vreq","list")
   return(result)
 }

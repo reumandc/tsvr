@@ -25,6 +25,6 @@ vreq<-function(com,comnull,vr)
 {
   errcheck_vreq(com,comnull,vr)  
   res<-list(com=com,comnull=comnull,vr=vr)  
-  class(res)<-append(class(res),"vreq") 
+  class(res)<-c("vreq","list") 
   return(res)
 }

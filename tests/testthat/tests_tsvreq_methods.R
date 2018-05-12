@@ -1,0 +1,50 @@
+context("tsvreq_methods")
+library(tsvr)
+
+test_that("test the set methods",{
+  h<-list(com=2,comnull=1,vr=2)
+  expect_error(set_ts(h,3),"Error in set_ts: set_ts only defined for class tsvreq")
+  expect_error(set_com(h,3),"Error in set_com: set_com only defined for classes vreq and tsvreq")
+  expect_error(set_comnull(h,2),"Error in set_comnull: set_comnull only defined for classes vreq and tsvreq")
+  expect_error(set_tsvr(h,12),"Error in set_tsvr: set_tsvr only defined for class tsvreq")
+  expect_error(set_wts(h,3),"Error in set_wts: set_wts only defined for class tsvreq")
+  h<-tsvreq(ts=c(1,2,3),com=c(2,2,2),comnull=c(2,1,2),tsvr=c(1,2,1),wts=c(1,1,1))
+  expect_error(set_ts(h,3),"Error in set_ts: tsvreq slots should not be changed individually")
+  expect_error(set_com(h,3),"Error in set_com: tsvreq slots should not be changed individually")
+  expect_error(set_comnull(h,2),"Error in set_comnull: tsvreq slots should not be changed individually")
+  expect_error(set_tsvr(h,12),"Error in set_tsvr: tsvreq slots should not be changed individually")
+  expect_error(set_wts(h,12),"Error in set_wts: tsvreq slots should not be changed individually")
+})
+
+test_that("test the get methods",{
+  h<-list(com=2,comnull=1,vr=2)
+  expect_error(get_ts(h),"Error in get_ts: get_ts only defined for class tsvreq")
+  expect_error(get_com(h),"Error in get_com: get_com only defined for classes vreq and tsvreq")
+  expect_error(get_comnull(h),"Error in get_comnull: get_comnull only defined for classes vreq and tsvreq")
+  expect_error(get_tsvr(h),"Error in get_tsvr: get_tsvr only defined for class tsvreq")
+  expect_error(get_wts(h),"Error in get_wts: get_wts only defined for class tsvreq")
+  h<-tsvreq(ts=c(1,2,3),com=c(2,2,2),comnull=c(2,1,2),tsvr=c(1,2,1),wts=c(1,1,1))
+  expect_equal(get_ts(h),c(1,2,3))
+  expect_equal(get_com(h),c(2,2,2))
+  expect_equal(get_comnull(h),c(2,1,2))
+  expect_equal(get_tsvr(h),c(1,2,1))
+  expect_equal(get_wts(h),c(1,1,1))
+})
+
+test_that("test the summary method",{
+  inp<-tsvreq(ts=c(1,2,3),com=c(2,2,2),comnull=c(2,1,2),tsvr=c(1,2,1),wts=c(1,1,1))
+  out<-summary(inp)
+  expect_equal(names(out),c("ts","com","comnull","tsvr","wts"))
+  expect_equal(out,list(ts=c(1,2,3),com=c(2,2,2),comnull=c(2,1,2),tsvr=c(1,2,1),wts=c(1,1,1)))
+})
+
+test_that("test the print method",{
+  inp<-tsvreq(ts=c(1,2,3),com=c(2,2,2),comnull=c(2,1,2),tsvr=c(1,2,1),wts=c(1,1,1))
+  expect_output(print(inp),"Object of class tsvreq")
+  expect_output(print(inp),"ts: ")
+  expect_output(print(inp),"com: ")
+  expect_output(print(inp),"comnull: ")
+  expect_output(print(inp),"tsvr: ")
+  expect_output(print(inp),"wts: ")
+})
+

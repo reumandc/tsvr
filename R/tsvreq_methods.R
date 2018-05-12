@@ -42,6 +42,21 @@ set_tsvr.tsvreq<-function(obj,newval)
   stop("Error in set_tsvr: tsvreq slots should not be changed individually")
 }
 
+set_wts<-function(obj,newval)
+{
+  UseMethod("set_wts",obj)
+}
+
+set_wts.default<-function(obj,newval)
+{
+  stop("Error in set_wts: set_wts only defined for class tsvreq")
+}
+
+set_wts.tsvreq<-function(obj,newval)
+{
+  stop("Error in set_wts: tsvreq slots should not be changed individually")
+}
+
 #value getting
 get_ts<-function(obj)
 {
@@ -100,22 +115,12 @@ get_wts.tsvreq<-function(obj)
 
 summary.tsvreq<-function(obj)
 {
-  print("Object of class tsvreq:")
-  print("ts:")
-  print(ts)
-  print("com:")
-  print(com)
-  print("comnull:")
-  print(comnull)
-  print("tsvr:")
-  print(tsvr)
-  print("wts:")
-  print(wts)
+  return(list(ts=get_ts(obj),com=get_com(obj),comnull=get_comnull(obj),tsvr=get_tsvr(obj),wts=get_wts(obj)))
 }
 
 print.tsvreq<-function(obj)
 {
-  summary.tsvreq(obj)  
+  cat(paste0("Object of class tsvreq:\n ts: ",head(get_ts(obj)),"\n com: ",head(get_com(obj)),"\n comnull: ",head(get_comnull(obj)),"\n tsvr: ",head(get_tsvr(obj)),"\n wts: ",head(get_wts(obj))))
 }
 
 #we need a plot method

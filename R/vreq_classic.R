@@ -26,7 +26,7 @@ vreq_classic<-function(X)
   errcheck_vreq(com=CVcom2,comnull=CVcomip2,vr=vr_classic)
       
   result<-list(com=CVcom2,comnull=CVcomip2,vr=vr_classic)
-  class(result)<-append(class(result),c("vreq_classic","vreq"))
+  class(result)<-c("vreq_classic","vreq","list")
   return(result)
 }
 

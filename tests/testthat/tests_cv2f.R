@@ -1,4 +1,4 @@
-context("errcheck_cv2f")
+context("cv2f")
 library(tsvr)
 
 test_that("test that it works for CVcom2",{

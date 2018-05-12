@@ -44,6 +44,6 @@ tsvreq_classic<-function(X)
   errcheck_tsvreq(ts=ts,com=com,comnull=comnull,tsvr=tsvr,wts=wts.res)
   
   result<-list(ts=ts,com=com,comnull=comnull,tsvr=tsvr,wts=wts.res)
-  class(result)<-append(class(result),c("tsvreq","tsvreq_classic"))
+  class(result)<-c("tsvreq_classic","tsvreq","list")
   return(result)
 }
