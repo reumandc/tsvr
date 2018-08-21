@@ -1,0 +1,29 @@
+---
+title: "Timescale-specfic variance ratio (tsvr) package vignette"
+author: "Lei Zhao, Shaopeng Wang, Daniel Reuman"
+date: ""
+geometry: "left=1cm,right=1cm,top=2.5cm,bottom=2.8cm"
+
+output: 
+  pdf_document:
+  number_sections: yes
+keep_tex: yes
+fig_caption: yes
+link-citations: True
+urlcolor: blue
+
+bibliography: tsvrvignette_refs.bib 
+
+vignette: >
+  %\VignetteIndexEntry{"Matrix model selection package vignette"}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+  
+# Acknowlegements
+
+This material is based upon work supported by the National Science Foundation 
+under Grant Numbers 17114195 and 1442595. Any opinions, findings, and conclusions 
+or recommendations expressed in this material are those of the author(s) and do 
+not necessarily reflect the views of the National Science Foundation.
+
