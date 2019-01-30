@@ -1,5 +1,4 @@
 context("vreq_classic")
-library(tsvr)
 
 test_that("test the values",{
   set.seed(101)
@@ -8,6 +7,8 @@ test_that("test the values",{
   
   #test class
   expect_s3_class(h,"vreq_classic")
+  expect_s3_class(h,"vreq")
+  expect_s3_class(h,"list")
   
   #test consistency
   expect_equal(h$com,h$comnull*h$vr)
@@ -29,6 +30,8 @@ test_that("test the values",{
   
   #test class
   expect_s3_class(h,"vreq_classic")
+  expect_s3_class(h,"vreq")
+  expect_s3_class(h,"list")
   
   #test consistency
   expect_equal(h$com,h$comnull*h$vr)

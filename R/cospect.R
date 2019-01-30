@@ -8,7 +8,7 @@
 #' \item{frequency}{a vector from 0 to 1 of the frequencies used}
 #' \item{cospectrum}{a 3D array, with cospectrum range in species by species by frequency}
 #'  
-#' @author Lei Zhao, \email{leizhao@@ku.edu}; Daniel Reuman, \email{reuman@@ku.edu}
+#' @author Lei Zhao, \email{lei.zhao@@cau.edu.cn}; Daniel Reuman, \email{reuman@@ku.edu}
 #' 
 #' @examples
 #' X<-matrix(runif(200,1,100), 10, 20)

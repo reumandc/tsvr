@@ -1,5 +1,9 @@
 context("cv2f")
-library(tsvr)
+
+test_that("test error catching",{
+  X<-matrix(runif(10*20)+1,20,20)
+  expect_error(cv2f(X,"test"),"Error in cv2f: type must be com, comip")
+})
 
 test_that("test that it works for CVcom2",{
   type<-"com"

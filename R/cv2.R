@@ -2,13 +2,13 @@
 #' 
 #' Calculates various measures of population and community variability 
 #' 
-#' @param X a matrix with counts or densities arranged in species by time step.
+#' @param X A matrix with counts or densities arranged in species by time step
 #' @param type If \code{pop}, calculate CVpop2. If \code{com}, calculate CVcom2. If \code{comip},
 #' calculate CVcomip2.
 #'
 #' @return \code{cv2} returns the value of population or community variability.
 #' 
-#' @author Lei Zhao, \email{leizhao@@ku.edu}; Daniel Reuman, \email{reuman@@ku.edu}; Shaopeng Wang, \email{shaopeng.wang@@idiv.de}
+#' @author Lei Zhao, \email{lei.zhao@@cau.edu.cn}; Daniel Reuman, \email{reuman@@ku.edu}; Shaopeng Wang, \email{shaopeng.wang@@pku.edu.cn}
 #' 
 #' @examples
 #' X<-matrix(runif(200,1,100), 10, 20)

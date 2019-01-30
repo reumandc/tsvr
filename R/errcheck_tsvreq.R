@@ -13,7 +13,7 @@
 
 errcheck_tsvreq<-function(ts,com,comnull,tsvr,wts)
 {
-  #numeric, single numbers, no NAs
+  #numeric, consistent lengths, no NAs
   if (!(is.numeric(ts) && is.numeric(com) && is.numeric(comnull) && is.numeric(tsvr) && is.numeric(wts)))
   {
     stop("Error in tsvreq class: all slots must be numeric")

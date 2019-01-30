@@ -1,5 +1,4 @@
 context("cospect")
-library(tsvr)
 
 test_that("test ancillary properties",{
   set.seed(303)
@@ -40,6 +39,5 @@ test_that("test a general case for reproducibility on future runs",{
   set.seed(201)
   X<-matrix(runif(10*20)+1,10,20)
   h<-cospect(X)
-  #used digest::digest(h) for the hash
-  expect_known_hash(h,hash="76e6366df389e14d3fe2f4b4ade8bb62")
+  expect_known_value(h,file="../vals/cospect_testval_01",update=FALSE)
 })

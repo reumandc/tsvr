@@ -4,7 +4,7 @@
 #' storing equations based on the classic variance ratio. Inherits from the \code{vreq} class,
 #' which inherits from the \code{list} class.
 #'
-#' @param X a matrix with counts or densities arranged in species by years
+#' @param X A matrix with counts or densities arranged in species by years
 #' 
 #' @return \code{vreq_classic} returns a \code{vreq_classic} object. Slots are:
 #' \item{com} the squared community CV, CVcom2
@@ -14,6 +14,7 @@
 #' @author Daniel Reuman, \email{reuman@@ku.edu}
 #'
 #' @examples
+#' #add later
 #' 
 #' @export
 

@@ -6,24 +6,80 @@ geometry: "left=1cm,right=1cm,top=2.5cm,bottom=2.8cm"
 
 output: 
   pdf_document:
-  number_sections: yes
-keep_tex: yes
-fig_caption: yes
+    number_sections: yes
+    keep_tex: yes
+    fig_caption: yes
 link-citations: True
 urlcolor: blue
 
 bibliography: tsvrvignette_refs.bib 
 
 vignette: >
-  %\VignetteIndexEntry{"Matrix model selection package vignette"}
+  %\VignetteIndexEntry{"tsvr vignette"}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
   
+Intro text for goals of package, incl. citaton to Lei's tsvr paper
+
+# Preparing the data
+\noindent A typical dataset for analysis using `tsvr` is an $N \times T$ matrix of numeric 
+values where rows correspond to species in a community (so the number of species is $N$)
+and columns correspond to evenly spaced times during which sampling was conducted (so the
+number of times sampling was conducted is $T$). Matrix entries may be densities, or percent
+cover values, or other measures of abundance in a community.
+
+Standard implementations of Fourier trasforms require time series consisting
+of measurements taken at evenly spaced times, with no missing data. The core functions provided
+in `tsvr` make these same assumptions and throw an error if data are missing.
+<!--***DAN: make sure they actually do throw an error-->
+The user is left to decide on and implement a reasonable way of filling missing
+data, if there such a way. We have previously 
+used the simple approach of
+replacing missing values in a time series by the median of the non-missing values in the
+time series [@Sheppard_16]. This approach, and other related simple 
+procedures [@Sheppard_16], seem
+unlikely to artefactually produce significant synchrony, or 
+coherence relationships with other
+variables, but rely on the percentage of missing data being fairly low and may obscure 
+detection of synchrony or significant coherence relationships if too many data are 
+missing. For applications which differ meaningfully from the prior work for which
+the tools of this package were developed,
+<!--***DAN: cite Lei's tsvr here-->
+different ways of dealing with missing data may be more appropriate.
+
+The timescale-specific variance ratio techniques which are the focus of this package
+us Fourier methods to decompose by timescale the classic 
+variance ratio and related quantities. Detrending and
+variance standardization across time series, data preparation techniques which are often
+applied before doing Fourier analysis, may not be approriate unless it makes sense 
+to calculate the classic variance ratio, and related quantities, after performing those
+data preparation techniques. And usually that is not what has been done.
+
+# The classic variance ratio and related quantities
+
+
+# The Loreau-de Mazancourt variance ratio and related quantities
+
+
+#The timescale-specific classic variance ratio and related quntities
+
+
+# The lack of a timescale-specific Loreau-de Mazancourt variance ratio
+
+
+# Aggregating timescale-specific variance ratio and related quantities to timescale bands
+
+
+
 # Acknowlegements
 
 This material is based upon work supported by the National Science Foundation 
-under Grant Numbers 17114195 and 1442595. Any opinions, findings, and conclusions 
-or recommendations expressed in this material are those of the author(s) and do 
-not necessarily reflect the views of the National Science Foundation.
+under grant numbers 17114195 and 1442595, and by the James S McDonnell Foundation. 
+Any opinions, findings, and conclusions 
+or recommendations expressed in this material are those of the authors and do 
+not necessarily reflect the views of the National Science Foundation or the McDonnell Foundation. 
+We thank all 
+users of the package who have reported or will later report ways in 
+which the package could be improved.
 

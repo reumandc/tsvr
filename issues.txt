@@ -1,9 +1,17 @@
-numerous notes in the code, each with ***DAN before it
+some notes in the code and vignette, each with ***DAN before it
 
-change Shaopeng's email throughout
+check emails throughout
 
-add examples for everything
+add examples for everything under @examples
 
-I recently learned that class vectors go in a different order from what I thought made sense, and this will have implications for the methods of all derived classes. I fixed it for vreq_classic but no other derived classes yet
+check the @reference sections of all docs and insert as needed
+
+@seealso section of all docs
+
 
   
+
+Questions
+
+What is the math reasoning behind CVpop? Can't remember what we defined that as and what for. See code for cv2
+

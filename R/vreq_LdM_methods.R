@@ -1,14 +1,89 @@
-#Simple methods for the vreq_LdM class
+#' Basic methods for the \code{vreq_LdM} class
+#' 
+#' Set, get, summary, and print methods for the \code{vreq_LdM} class.
+#' 
+#' @param object,x,obj An object of class \code{vreq_LdM}
+#' @param newval A new value, for the \code{set_*} methods
+#' @param ... Not currently used. Included for argument consistency
+#' with existing generics.
+#' 
+#' @return \code{summary.vreq_LdM} produces a summary of a \code{vreq_LdM} object.
+#' A \code{print.vreq_LdM} method is also available. For \code{vreq_LdM} objects, 
+#' \code{set_*} and \code{get_*} methods are available for all slots (see
+#' the documentation for \code{vreq_LdM} for a list). The \code{set_*} methods 
+#' just throw an error, to prevent breaking the consistency between the 
+#' slots of a \code{vreq_LdM} object.
+#'  
+#' @author Daniel Reuman, \email{reuman@@ku.edu}
+#' 
+#' @seealso \code{\link{vreq_LdM}}
+#' 
+#' @examples
+#' add later
+#'  
+#' @name vreq_LdM_methods
+NULL
+#> NULL
 
-#value setting - not necessary, inherited from vreq class
-#value getting - not necessary, inherited from vreq class
-
-summary.vreq_LdM<-function(obj)
+#' @rdname vreq_LdM_methods
+#' @export
+summary.vreq_LdM<-function(object,...)
 {
-  return(c(CVcom2=get_com(obj),CVpop2=get_comnull(obj),LdM_vr=get_vr(obj)))
+  res<-list(class="vreq_LdM",
+            com=get_com(object),
+            comnull=get_comnull(object),
+            vr=get_vr(object))
+  
+  #a summary_tsvr object inherits from the list class, but has its own print method
+  class(res)<-c("summary_tsvr","list")
+  return(res)
 }
 
-print.vreq_LdM<-function(obj)
+#' @rdname vreq_LdM_methods
+#' @export
+print.vreq_LdM<-function(x,...)
 {
-  cat(paste0("Object of class vreq_LdM:\n CVcom2: ",get_com(obj),"\n CVpop2: ",get_comnull(obj),"\n LdM vr: ",get_vr(obj)))
+  cat(paste0("Object of class vreq_LdM:\n CVcom2: ",get_com(x),"\n CVpop2: ",get_comnull(x),"\n LdM vr: ",get_vr(x)))
+}
+
+#' @rdname vreq_LdM_methods
+#' @export
+set_com.vreq_LdM<-function(obj,newval)
+{
+  stop("Error in set_com: vreq_LdM slots should not be changed individually")
+}
+
+#' @rdname vreq_LdM_methods
+#' @export
+set_comnull.vreq_LdM<-function(obj,newval)
+{
+  stop("Error in set_comnull: vreq_LdM slots should not be changed individually")
+}
+
+#' @rdname vreq_LdM_methods
+#' @export
+set_vr.vreq_LdM<-function(obj,newval)
+{
+  stop("Error in set_vr: vreq_LdM slots should not be changed individually")
+}
+
+#' @rdname vreq_LdM_methods
+#' @export
+get_com.vreq_LdM<-function(obj)
+{
+  return(obj$com)
+}
+
+#' @rdname vreq_LdM_methods
+#' @export
+get_comnull.vreq_LdM<-function(obj)
+{
+  return(obj$comnull)
+}
+
+#' @rdname vreq_LdM_methods
+#' @export
+get_vr.vreq_LdM<-function(obj)
+{
+  return(obj$vr)
 }
