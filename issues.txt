@@ -8,6 +8,7 @@ check the @reference sections of all docs and insert as needed
 
 @seealso section of all docs
 
+write plot methods for timescale specific classes, also tests
 
   
 

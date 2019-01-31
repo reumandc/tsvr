@@ -1,5 +1,4 @@
 context("tsvreq_classic")
-library(tsvr)
 
 test_that("test the values",{
   set.seed(101)

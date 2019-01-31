@@ -16,6 +16,7 @@
 #' @author Daniel Reuman, \email{reuman@@ku.edu}
 #'
 #' @examples
+#' #add later
 #' 
 #' @export
 

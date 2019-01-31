@@ -1,6 +1,6 @@
-#' Calculate the variability partitioning for CVcom, CVcomip
+#' Compute a frequency-specific version of CVcom or CVcomip
 #' 
-#' This function is used to calculate the variability partitioning.
+#' Compute a frequency-specific version of CVcom or CVcomip.
 #' 
 #' @param X A matrix with counts or densities arranged in species by time step
 #' @param type If \code{com}, calculate a frequency-specific CVcom2. If \code{comip}, calculate a 
@@ -13,10 +13,7 @@
 #' @author Shaopeng Wang, \email{shaopeng.wang@@pku.edu.cn}; Lei Zhao, \email{lei.zhao@@cau.edu.cn}; Daniel Reuman, \email{reuman@@ku.edu}
 #' 
 #' @examples
-#' X<-matrix(runif(200,1,100), 10, 20)
-#' rownames(X)<-letters[1:10]
-#' colnames(X)<-1991:2010
-#' 
+#' X<-matrix(runif(200,1,100), 10, 20) 
 #' ans<-cv2f(X, type="com")
 #' 
 #' @export

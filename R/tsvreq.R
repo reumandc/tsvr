@@ -18,7 +18,7 @@
 #' \item{tsvr}{the input}
 #' \item{wts}{the input}
 #' 
-#' @author Shaopeng Wang, \email{shaopeng.wang@@idiv.de}; Lei Zhao, \email{leizhao@@ku.edu}; Daniel Reuman, \email{reuman@@ku.edu}
+#' @author Shaopeng Wang, \email{shaopeng.wang@@pku.edu.cn}; Lei Zhao, \email{lei.zhao@@cau.edu.cn}; Daniel Reuman, \email{reuman@@ku.edu}
 #' 
 #' @export
 

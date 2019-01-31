@@ -71,6 +71,8 @@ data preparation techniques. And usually that is not what has been done.
 # Aggregating timescale-specific variance ratio and related quantities to timescale bands
 
 
+# Example using real data
+This could be an analysis of one plot from one site from the grassland data
 
 # Acknowlegements
 
