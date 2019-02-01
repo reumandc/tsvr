@@ -1,13 +1,18 @@
 context("tsvreq_classic")
 
-test_that("test the values",{
+test_that("test the values format",{
   set.seed(101)
   X<-matrix(runif(10*20)+1,10,20)
   h<-tsvreq_classic(X)
   
-  #test class
+  #test class and names
   expect_s3_class(h,"tsvreq_classic")
-  
+  expect_s3_class(h,"tsvreq")
+  expect_s3_class(h,"list")
+  expect_equal(names(h),c("ts","com","comnull","tsvr","wts"))
+})
+
+test_that("test for consistency in various ways",{
   #test consistency
   expect_equal(h$com,h$comnull*h$tsvr)
   

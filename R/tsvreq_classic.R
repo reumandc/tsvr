@@ -25,7 +25,7 @@ tsvreq_classic<-function(X)
   errcheck_data(X,"tsvreq_classic")
   
   #get ts and tsvr
-  fsvr_classic<-vrf(X, method="classic", flag="fs")
+  fsvr_classic<-vrf(X)
   freq<-fsvr_classic$frequency
   ts<-1/freq
   tsvr<-fsvr_classic$vr
@@ -39,12 +39,12 @@ tsvreq_classic<-function(X)
   comnull<-CVcomip2$cv2
   
   #get wts
-  wts.res<-wts(X, method="classic")
+  wts.res<-wts(X)
   wts.res<-wts.res$wts
   
   errcheck_tsvreq(ts=ts,com=com,comnull=comnull,tsvr=tsvr,wts=wts.res)
   
-  result<-list(ts=ts,com=com,comnull=comnull,tsvr=tsvr,wts=wts.res)
+  result<-list(ts=rev(ts),com=rev(com),comnull=rev(comnull),tsvr=rev(tsvr),wts=rev(wts.res))
   class(result)<-c("tsvreq_classic","tsvreq","list")
   return(result)
 }

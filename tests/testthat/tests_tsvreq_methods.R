@@ -1,5 +1,4 @@
 context("tsvreq_methods")
-library(tsvr)
 
 test_that("test the set methods",{
   h<-list(com=2,comnull=1,vr=2)

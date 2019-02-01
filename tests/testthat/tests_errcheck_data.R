@@ -1,5 +1,4 @@
 context("errcheck_data")
-library(tsvr)
 
 test_that("test that it catches bad entries",{
   calledby<-"test"
