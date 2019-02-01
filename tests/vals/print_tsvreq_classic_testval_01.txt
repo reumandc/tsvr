@@ -1,0 +1,6 @@
+Object of class tsvreq_classic:
+ ts, a length 19 numeric vector: 1.05 1.11 1.18 ... 6.67 10 20 
+ CVcom2, a length 19 numeric vector: 1.94e-05 0.00046 2.14e-05 ... 2.14e-05 0.00046 1.94e-05 
+ CVcomip2, a length 19 numeric vector: 0.000131 0.000209 0.000191 ... 0.000191 0.000209 0.000131 
+ tsvr, a length 19 numeric vector: 0.148 2.2 0.112 ... 0.112 2.2 0.148 
+ wts, a length 19 numeric vector: 0.0334 0.0533 0.0487 ... 0.0487 0.0533 0.0334 

@@ -1,0 +1,6 @@
+Object of class tsvreq:
+ ts, a length 10 numeric vector: 1 2 3 ... 8 9 10 
+ com, a length 10 numeric vector: 2 2 2 ... 2 2 2 
+ comnull, a length 10 numeric vector: 3 3 3 ... 3 3 3 
+ tsvr, a length 10 numeric vector: 0.667 0.667 0.667 ... 0.667 0.667 0.667 
+ wts, a length 10 numeric vector: 5 5 5 ... 5 5 5 
