@@ -4,7 +4,8 @@
 #' 
 #' @param object,x,obj An object of class \code{tsvreq}
 #' @param newval A new value, for the \code{set_*} methods
-#' @param ... Not currently used. Included for argument consistency
+#' @param filename A filename, no extension, could have a path. Used for saving a plot as a pdf. The default value NA causes the default plotting device to be used. 
+#' @param ... Passed to plot. Not currently used for other methods, included there only for argument consistency
 #' with existing generics.
 #' 
 #' @return \code{summary.tsvreq} produces a summary of a \code{tsvreq} object.
@@ -92,10 +93,76 @@ print.tsvreq<-function(x,...)
 
 #' @rdname tsvreq_methods
 #' @export
-#plot.tsvreq<-function(obj)
-#{
-#  
-#}
+plot.tsvreq<-function(x,filename=NA,...)
+{
+  #plot dimnsions, units inches
+  panwd<-3
+  panht<-2
+  xht<-.25
+  numhtwd<-0.25
+  ywd<-.25
+  gap<-0.25
+  totht<-4*(panht+gap)+xht+numhtwd
+  totwd<-ywd+numhtwd+panwd+gap
+  
+  if (!(is.na(filename)))
+  {
+    pdf(file=paste0(filename,".pdf"),width=totwd,height=totht)
+  }
+  
+  #top panel - comnull
+  par(fig=c((ywd+numhtwd)/totwd,
+            (ywd+numhtwd+panwd)/totwd,
+            (xht+numhtwd+3*(panht+gap))/totht,
+            (xht+numhtwd+3*(panht+gap)+panht)/totht),
+      mai=c(0,0,0,0),mgp=c(3,.15,0),tcl=-.25)
+  xv<-x$ts
+  yv<-x$comnull
+  plot(xv,yv,type='l',xaxt="n",ylab="comnull",...)
+  mtext("comnull",side=2,1)
+  #lablocs<-c(.25,.5,.75,1)
+  #lablabs<-round(1/lablocs,2)
+  axis(1,labels=FALSE)
+  
+  #next panel down - tsvr
+  par(fig=c((ywd+numhtwd)/totwd,
+            (ywd+numhtwd+panwd)/totwd,
+            (xht+numhtwd+2*(panht+gap))/totht,
+            (xht+numhtwd+2*(panht+gap)+panht)/totht),
+      mai=c(0,0,0,0),mgp=c(3,.15,0),tcl=-.25,new=T)
+  yv<-x$tsvr
+  plot(xv,yv,type='l',xaxt="n",...)
+  mtext("tsvr",side=2,1)
+  axis(1,labels=FALSE)
+  
+  #next panel down - com
+  par(fig=c((ywd+numhtwd)/totwd,
+            (ywd+numhtwd+panwd)/totwd,
+            (xht+numhtwd+1*(panht+gap))/totht,
+            (xht+numhtwd+1*(panht+gap)+panht)/totht),
+      mai=c(0,0,0,0),mgp=c(3,.15,0),tcl=-.25,new=T)
+  yv<-x$com
+  plot(xv,yv,type='l',xaxt="n",...)
+  mtext("com",side=2,1)
+  axis(1,labels=FALSE)
+  
+  #bottom panel - wts
+  par(fig=c((ywd+numhtwd)/totwd,
+            (ywd+numhtwd+panwd)/totwd,
+            (xht+numhtwd+0*(panht+gap))/totht,
+            (xht+numhtwd+0*(panht+gap)+panht)/totht),
+      mai=c(0,0,0,0),mgp=c(3,.15,0),tcl=-.25,new=T)
+  yv<-x$wts
+  plot(xv,yv,type='l',xaxt="n",...)
+  mtext("wts",side=2,1)
+  mtext("Timescale",side=1,1)
+  axis(1)
+  
+  if (!(is.na(filename)))
+  {
+    dev.off()
+  }
+}
 
 #' @rdname setget_methods
 #' @export

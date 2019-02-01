@@ -4,7 +4,8 @@
 #' 
 #' @param object,x,obj An object of class \code{tsvreq_classic}
 #' @param newval A new value, for the \code{set_*} methods
-#' @param ... Not currently used. Included for argument consistency
+#' @param filename A filename, no extension, could have a path. Used for saving a plot as a pdf. The default value NA causes the default plotting device to be used. 
+#' @param ... Passed to plot. Not currently used for other methods, included there only for argument consistency
 #' with existing generics.
 #' 
 #' @return \code{summary.tsvreq_classic} produces a summary of a \code{tsvreq_classic} object.
@@ -22,7 +23,7 @@
 #' @examples
 #' add later
 #'  
-#' @name tsvreq__classic_methods
+#' @name tsvreq_classic_methods
 NULL
 #> NULL
 
@@ -93,55 +94,88 @@ print.tsvreq_classic<-function(x,...)
 
 #' @rdname tsvreq_classic_methods
 #' @export
-#we need a plot method, code snippets cannibalized from elsewhere pasted below
-#plot.tsvreq_classic<-function(obj)
-#{
-#
+plot.tsvreq_classic<-function(x,filename=NA,...)
+{
+  #plot dimnsions, units inches
+  panwd<-3
+  panht<-2
+  xht<-.25
+  numhtwd<-0.25
+  ywd<-.25
+  gap<-0.25
+  totht<-4*(panht+gap)+xht+numhtwd
+  totwd<-ywd+numhtwd+panwd+gap
+  
+  if (!(is.na(filename)))
+  {
+    pdf(file=paste0(filename,".pdf"),width=totwd,height=totht)
+  }
+  
+  #top panel - comnull
+  par(fig=c((ywd+numhtwd)/totwd,
+            (ywd+numhtwd+panwd)/totwd,
+            (xht+numhtwd+3*(panht+gap))/totht,
+            (xht+numhtwd+3*(panht+gap)+panht)/totht),
+      mai=c(0,0,0,0),mgp=c(3,.15,0),tcl=-.25)
+  xv<-1/rev(x$ts)
+  yv<-rev(x$comnull)
+  plot(xv,yv,type='n',xaxt="n",...)
+  d<-diff(range(yv))
+  graphics::rect(.5,min(yv)-d,2,max(yv)+d,col='grey',border=NA)
+  lines(xv,yv,type='l',xaxt="n",...)
+  mtext(expression(CV[comip]^2),side=2,1)
+  lablocs<-c(.25,.5,.75,1)
+  lablabs<-round(1/lablocs,2)
+  axis(1,at=lablocs,labels=FALSE)
 
-#' @param fig logical. If \code{FALSE} (default), do not output the figure. If \code{TRUE}, 
-#' plot the figure with x-axis frequency and y-axis variance ratio.
-
-#if(fig){
-#  if(f.flag=="fs"){
-#    plot(cospec$frequency, vr.f, xlab="frequency (cycles/year)", ylab="frequency specific VR",
-#         xlim=c(0,1), ylim=c(0, max(vr.f)), typ="l")
-#  }else{plot(cospec$frequency, vr.f, xlab="frequency (cycles/year)", ylab="frequency decomposition of VR",
-#             xlim=c(0,1), ylim=c(0, max(vr.f)), typ="l")
-#    text(0.5,max(vr.f),labels=paste("VR=",as.character(round(sum(vr.f),4)),sep=''),adj=c(1.05,-.4))}
-#  lines(c(.5,.5),c(0,max(vr.f)),lty='dotted')
-#  rect(.5,-max(vr.f),2,2*max(vr.f),density=NA,col=rgb(0,0,0,alpha=0.2))
-#}
-
-#' @param fig logical. If \code{FALSE} (default), do not output the figure. If \code{TRUE}, 
-#' plot the figure with x-axis frequency and y-axis CV^2.
-
-#if(fig){
-#  if(type=="com"){
-#    plot(freq, cv2.f, xlab="frequency (cycles/year)", ylab="",
-#         xlim=c(0,1), ylim=c(0, max(cv2.f)), typ="l")
-#    mtext(expression(paste(CV[com]^2,(italic(f)))), side=2, line=2)
-#    text(0.5,max(cv2.f),labels=bquote(paste(CV[com]^2,"=",.(round(sum(cv2.f),4)))),adj=c(1.05,0.4))
-#  }else{plot(freq, cv2.f, xlab="frequency (cycles/year)", ylab="",
-#             xlim=c(0,1), ylim=c(0, max(cv2.f)), typ="l")
-#    mtext(expression(paste(CV[pop]^2,(italic(f)))), side=2, line=2)
-#    text(0.5,max(cv2.f),labels=bquote(paste(CV[pop]^2,"=",.(round(sum(cv2.f),4)))),adj=c(1.05,0.4))}
-#  
-#  lines(c(.5,.5),c(0,max(cv2.f)),lty='dotted')
-#  rect(.5,-max(cv2.f),2,2*max(cv2.f),density=NA,col=rgb(0,0,0,alpha=0.2))
-#}
-
-#' @param fig logical. If \code{FALSE} (default), do not output the figure. If \code{TRUE}, 
-#' plot the figure with x-axis frequency and y-axis power of oscillation
-
-#if(fig){
-#  plot(cospec$frequency, strength, xlab="frequency (cycles/year)", ylab="strength of oscillation",
-#       xlim=c(0,1), ylim=c(0, max(strength)), typ="l")
-#  text(0.5,max(strength),labels=paste("pow=",as.character(round(sum(strength),4)),sep=''),adj=c(1.05,-.4))
-#  lines(c(.5,.5),c(0,max(strength)),lty='dotted')
-#  rect(.5,-max(strength),2,2*max(strength),density=NA,col=rgb(0,0,0,alpha=0.2))
-#}
-
-#}
+  #next panel down - tsvr
+  par(fig=c((ywd+numhtwd)/totwd,
+            (ywd+numhtwd+panwd)/totwd,
+            (xht+numhtwd+2*(panht+gap))/totht,
+            (xht+numhtwd+2*(panht+gap)+panht)/totht),
+      mai=c(0,0,0,0),mgp=c(3,.15,0),tcl=-.25,new=T)
+  yv<-rev(x$tsvr)
+  plot(xv,yv,type='n',xaxt="n",...)
+  d<-diff(range(yv))
+  graphics::rect(.5,min(yv)-d,2,max(yv)+d,col='grey',border=NA)
+  lines(xv,yv,type='l',xaxt="n",...)
+  mtext("tsvr",side=2,1)
+  axis(1,at=lablocs,labels=FALSE)
+  
+  #next panel down - com
+  par(fig=c((ywd+numhtwd)/totwd,
+            (ywd+numhtwd+panwd)/totwd,
+            (xht+numhtwd+1*(panht+gap))/totht,
+            (xht+numhtwd+1*(panht+gap)+panht)/totht),
+      mai=c(0,0,0,0),mgp=c(3,.15,0),tcl=-.25,new=T)
+  yv<-rev(x$com)
+  plot(xv,yv,type='n',xaxt="n",...)
+  d<-diff(range(yv))
+  graphics::rect(.5,min(yv)-d,2,max(yv)+d,col='grey',border=NA)
+  lines(xv,yv,type='l',xaxt="n",...)
+  mtext(expression(CV[com]^2),side=2,1)
+  axis(1,at=lablocs,labels=FALSE)
+  
+  #bottom panel - wts
+  par(fig=c((ywd+numhtwd)/totwd,
+            (ywd+numhtwd+panwd)/totwd,
+            (xht+numhtwd+0*(panht+gap))/totht,
+            (xht+numhtwd+0*(panht+gap)+panht)/totht),
+      mai=c(0,0,0,0),mgp=c(3,.15,0),tcl=-.25,new=T)
+  yv<-rev(x$wts)
+  plot(xv,yv,type='n',xaxt="n",...)
+  d<-diff(range(yv))
+  graphics::rect(.5,min(yv)-d,2,max(yv)+d,col='grey',border=NA)
+  lines(xv,yv,type='l',xaxt="n",...)
+  mtext("wts",side=2,1)
+  mtext("Timescale",side=1,1)
+  axis(1,at=lablocs,labels=lablabs)
+  
+  if (!(is.na(filename)))
+  {
+    dev.off()
+  }
+}
 
 #' @rdname tsvreq_classic_methods
 #' @export

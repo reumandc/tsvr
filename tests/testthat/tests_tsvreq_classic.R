@@ -13,6 +13,10 @@ test_that("test the values format",{
 })
 
 test_that("test for consistency in various ways",{
+  set.seed(101)
+  X<-matrix(runif(10*20)+1,10,20)
+  h<-tsvreq_classic(X)
+
   #test consistency
   expect_equal(h$com,h$comnull*h$tsvr)
   

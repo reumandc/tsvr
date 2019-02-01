@@ -14,10 +14,10 @@ aggts(obj, ts)
 }
 \value{
 \code{aggts} returns an object of class \code{vreq_classic_ag}. Slots are:
-\item{com} the timescale-aggregated value of CVcom2
-\item{comnull} the timescale-aggregated value of CVcomip2
-\item{vr} the timescale-aggregated value of the classic variance ratio
-\item{ts} the timescales over which aggregation was performed
+\item{com}{the timescale-aggregated value of CVcom2}
+\item{comnull}{the timescale-aggregated value of CVcomip2}
+\item{vr}{the timescale-aggregated value of the classic variance ratio}
+\item{ts}{the timescales over which aggregation was performed}
 }
 \description{
 All the components of a \code{tsvreq_classic} object can be aggregated across an arbitrary 

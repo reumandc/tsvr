@@ -1,18 +1,21 @@
 Package: tsvr
-Version: 0.0.1
+Version: 1.0.0
 Type: Package
-Title: Timescale-specific variance ratio
+Title: Timescale-specific variance ratio for use in community ecology
 Authors@R: c(
-    person("Daniel C.", "Reuman", email = "reuman@ku.edu", role = c("aut", "cre", "cph")),
-    person("Lei", "Zhao", email = "leizhao@ku.edu", role=c("aut")),
-    person("Shaopeng", "Wang", email = "shaopeng.wang@@idiv.de", role=c("aut"))
+    person("Daniel C.", "Reuman", email = "reuman@ku.edu", role = c("aut", "cre")),
+    person("Lei", "Zhao", email = "lei.zhao@cau.edu.cn", role=c("aut")),
+    person("Shaopeng", "Wang", email = "shaopeng.wang@pku.edu.cn", role=c("aut"))
     )
-Description: The package contains tools for timescale decomposition of the variance ratio
-License: GPL (>=3)
+Description: The package contains tools for timescale decomposition of the classic variance ratio ratio of community ecology
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
-Suggests: testthat,
+Imports:
+Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat,
+    vdiffr
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1

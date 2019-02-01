@@ -14,10 +14,10 @@
 #' @param ts The timescales to aggregate over
 #' 
 #' @return \code{aggts} returns an object of class \code{vreq_classic_ag}. Slots are:
-#' \item{com} the timescale-aggregated value of CVcom2
-#' \item{comnull} the timescale-aggregated value of CVcomip2
-#' \item{vr} the timescale-aggregated value of the classic variance ratio
-#' \item{ts} the timescales over which aggregation was performed
+#' \item{com}{the timescale-aggregated value of CVcom2}
+#' \item{comnull}{the timescale-aggregated value of CVcomip2}
+#' \item{vr}{the timescale-aggregated value of the classic variance ratio}
+#' \item{ts}{the timescales over which aggregation was performed}
 #' 
 #' @author Shaopeng Wang, \email{shaopeng.wang@@pku.edu.cn}; Lei Zhao, \email{lei.zhao@@cau.edu.cn}; Daniel Reuman, \email{reuman@@ku.edu}
 #' 

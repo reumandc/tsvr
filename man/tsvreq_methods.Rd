@@ -4,7 +4,7 @@
 \alias{tsvreq_methods}
 \alias{summary.tsvreq}
 \alias{print.tsvreq}
-\alias{set_ts}
+\alias{plot.tsvreq}
 \alias{set_ts.tsvreq}
 \alias{set_com.tsvreq}
 \alias{set_comnull.tsvreq}
@@ -21,7 +21,7 @@
 
 \method{print}{tsvreq}(x, ...)
 
-set_ts(obj, newval)
+\method{plot}{tsvreq}(x, filename = NA, ...)
 
 \method{set_ts}{tsvreq}(obj, newval)
 
@@ -46,8 +46,10 @@ set_ts(obj, newval)
 \arguments{
 \item{object, x, obj}{An object of class \code{tsvreq}}
 
-\item{...}{Not currently used. Included for argument consistency
+\item{...}{Passed to plot. Not currently used for other methods, included there only for argument consistency
 with existing generics.}
+
+\item{filename}{A filename, no extension, could have a path. Used for saving a plot as a pdf. The default value NA causes the default plotting device to be used.}
 
 \item{newval}{A new value, for the \code{set_*} methods}
 }

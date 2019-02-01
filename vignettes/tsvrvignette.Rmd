@@ -62,7 +62,7 @@ data preparation techniques. And usually that is not what has been done.
 # The Loreau-de Mazancourt variance ratio and related quantities
 
 
-#The timescale-specific classic variance ratio and related quntities
+# The timescale-specific classic variance ratio and related quntities
 
 
 # The lack of a timescale-specific Loreau-de Mazancourt variance ratio

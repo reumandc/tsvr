@@ -7,9 +7,9 @@
 #' @param X A matrix with counts or densities arranged in species by years
 #' 
 #' @return \code{vreq_LdM} returns a \code{vreq_LdM} object. Slots are:
-#' \item{com} the squared community CV, CVcom2
-#' \item{comnull} CVpop2
-#' \item{vr} the L-dM variance ratio
+#' \item{com}{the squared community CV, CVcom2}
+#' \item{comnull}{CVpop2}
+#' \item{vr}{the L-dM variance ratio}
 #' 
 #' @author Daniel Reuman, \email{reuman@@ku.edu}
 #'

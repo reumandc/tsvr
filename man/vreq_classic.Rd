@@ -11,9 +11,9 @@ vreq_classic(X)
 }
 \value{
 \code{vreq_classic} returns a \code{vreq_classic} object. Slots are:
-\item{com} the squared community CV, CVcom2
-\item{comnull} CVcomip2
-\item{vr} the classic variance ratio
+\item{com}{the squared community CV, CVcom2}
+\item{comnull}{CVcomip2}
+\item{vr}{the classic variance ratio}
 }
 \description{
 The \code{vreq_classic} (variance ratio equation, classic variance ratio) class is for 

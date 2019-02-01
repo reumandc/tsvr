@@ -11,9 +11,9 @@ vreq_LdM(X)
 }
 \value{
 \code{vreq_LdM} returns a \code{vreq_LdM} object. Slots are:
-\item{com} the squared community CV, CVcom2
-\item{comnull} CVpop2
-\item{vr} the L-dM variance ratio
+\item{com}{the squared community CV, CVcom2}
+\item{comnull}{CVpop2}
+\item{vr}{the L-dM variance ratio}
 }
 \description{
 The \code{vreq_LdM} (variance ratio equation, Loreau-de Mazancourt variance ratio) class is for 

@@ -47,4 +47,10 @@ test_that("test the print method",{
   expect_known_output(print(inp),"../vals/print_tsvreq_classic_testval_01.txt",print=TRUE,update=FALSE)
 })
 
-#also need to test plot method once written
+test_that("test the plot method",{
+  X<-matrix(runif(10*100),10,100)
+  inp<-tsvreq_classic(X)
+  
+  Test_plot_tsvreq_classic<-function(){plot(inp)}  
+  vdiffr::expect_doppelganger(title="Test-plot-tsvreq-classic",fig=Test_plot_tsvreq_classic)
+})

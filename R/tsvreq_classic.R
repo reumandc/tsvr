@@ -7,11 +7,11 @@
 #' @param X a matrix with counts or densities arranged in species by years
 #' 
 #' @return \code{tsvreq_classic} returns a \code{tsvreq_classic} object. Slots are:
-#' \item{ts} a vector of timescales
-#' \item{com} a timescale-specific decomposition of CVcom2
-#' \item{comnull} a timescale-specific decomposition of CVcomip2
-#' \item{tsvr} a timescale-specific version of the classic variance ratio
-#' \item{wts} a vector of weights, same length as all the above
+#' \item{ts}{a vector of timescales}
+#' \item{com}{a timescale-specific decomposition of CVcom2}
+#' \item{comnull}{a timescale-specific decomposition of CVcomip2}
+#' \item{tsvr}{a timescale-specific version of the classic variance ratio}
+#' \item{wts}{a vector of weights, same length as all the above}
 #' 
 #' @author Daniel Reuman, \email{reuman@@ku.edu}
 #'

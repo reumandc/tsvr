@@ -11,11 +11,11 @@ tsvreq_classic(X)
 }
 \value{
 \code{tsvreq_classic} returns a \code{tsvreq_classic} object. Slots are:
-\item{ts} a vector of timescales
-\item{com} a timescale-specific decomposition of CVcom2
-\item{comnull} a timescale-specific decomposition of CVcomip2
-\item{tsvr} a timescale-specific version of the classic variance ratio
-\item{wts} a vector of weights, same length as all the above
+\item{ts}{a vector of timescales}
+\item{com}{a timescale-specific decomposition of CVcom2}
+\item{comnull}{a timescale-specific decomposition of CVcomip2}
+\item{tsvr}{a timescale-specific version of the classic variance ratio}
+\item{wts}{a vector of weights, same length as all the above}
 }
 \description{
 The \code{tsvreq_classic} (timescale-specific variance ratio equation, classic variance
