@@ -14,10 +14,11 @@
 #' @references Loreau & Mazancourt, Species Synchrony and Its Drivers: Neutral and Nonneutral Community 
 #' Dynamics in Fluctuating Environments. 2008, Am. Nat. 172(2)
 #' 
+#' @seealso \code{\link{vrf}}, \code{\link{vreq}}, \code{\link{vreq_classic}}, \code{\link{vreq_LdM}},
+#' \code{\link{browseVignettes("tsvr")}}
+#' 
 #' @examples
 #' X<-matrix(runif(200,1,100), 10, 20)
-#' rownames(X)<-letters[1:10]
-#' colnames(X)<-1991:2010
 #' vr(X, method="LdM")
 #' vr(X, method="classic")
 #' 

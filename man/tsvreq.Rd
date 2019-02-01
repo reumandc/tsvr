@@ -31,6 +31,10 @@ functional equations based on a timescale-specific variance ratio. This is a gen
 from which other classes inherit (only \code{tsvreq_classic} at this point). \code{tsvreq} 
 inherits from the \code{list} class.
 }
+\seealso{
+\code{\link{tsvreq_methods}}, \code{\link{tsvreq_classic}}, \code{\link{vreq}}, 
+\code{\link{browseVignettes("tsvr")}}
+}
 \author{
 Shaopeng Wang, \email{shaopeng.wang@pku.edu.cn}; Lei Zhao, \email{lei.zhao@cau.edu.cn}; Daniel Reuman, \email{reuman@ku.edu}
 }

@@ -48,8 +48,15 @@ slots of a \code{vreq_LdM} object.
 Set, get, summary, and print methods for the \code{vreq_LdM} class.
 }
 \examples{
-add later
+X<-matrix(runif(10*100),10,100)
+res<-vreq_LdM(X)
+print(res)
+summary(res)
  
+}
+\references{
+Loreau & Mazancourt, Species Synchrony and Its Drivers: Neutral and Nonneutral Community 
+Dynamics in Fluctuating Environments. 2008, Am. Nat. 172(2)
 }
 \seealso{
 \code{\link{vreq_LdM}}

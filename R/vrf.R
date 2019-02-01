@@ -9,6 +9,10 @@
 #' \item{vr}{a vector of frequency-specific or frequency-decomposition of VR}
 #' 
 #' @author Lei Zhao, \email{lei.zhao@@cau.edu.cn}; Daniel Reuman, \email{reuman@@ku.edu}
+#'
+#' @references <Lei's paper>
+#' 
+#' @seealso \code{\link{vr}}
 #' 
 #' @examples
 #' X<-matrix(runif(200,1,100), 10, 20)

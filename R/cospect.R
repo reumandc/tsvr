@@ -12,11 +12,11 @@
 #' 
 #' @examples
 #' X<-matrix(runif(200,1,100), 10, 20)
-#' rownames(X)<-letters[1:10]
-#' colnames(X)<-1991:2010
 #' ans<-cospect(X)
 #' 
-#' @keywords internal
+#' @note For internal use
+#' 
+#' @importFrom stats fft
 
 cospect<-function(X)
 {
@@ -28,10 +28,10 @@ cospect<-function(X)
   cosp <- array(NA,dim=c(nrow(X), nrow(X), length(freqlen)))
   for (i in 1:nrow(X)){
     a <- X[i,]
-    ffta<-fft(a)
+    ffta<-stats::fft(a)
     for (j in 1:nrow(X)){
       b <- X[j,]
-      fftb<-fft(b)
+      fftb<-stats::fft(b)
       cospectrum<-(Re(Conj(ffta)*fftb))/tslength/(tslength-1)
       
       cosp[i,j,]<-cospectrum[1:length(freqlen)]

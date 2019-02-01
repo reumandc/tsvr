@@ -48,7 +48,8 @@ slots of a \code{vreq} object.
 Set, get, summary, and print methods for the \code{vreq} class.
 }
 \examples{
-add later
+res<-vreq(com=2,comnull=1,vr=2)
+print(res)
  
 }
 \seealso{

@@ -16,7 +16,11 @@
 #' @author Daniel Reuman, \email{reuman@@ku.edu}
 #'
 #' @examples
-#' #add later
+#' X<-matrix(runif(10*100),10,100)
+#' res<-tsvreq_classic(X)
+#' 
+#' @seealso \code{\link{tsvreq_classic_methods}}, \code{\link{tsvreq}}, \code{\link{vreq_classic}}, 
+#' \code{\link{browseVignettes("tsvr")}},
 #' 
 #' @export
 

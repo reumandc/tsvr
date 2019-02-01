@@ -8,6 +8,12 @@
 #' meet the requirements of a \code{vreq} object
 #' 
 #' @author Daniel Reuman, \email{reuman@@ku.edu}
+#' 
+#' @examples
+#' com<-2
+#' comnull<-2
+#' vr<-1
+#' errcheck(com,comnull,vr)
 
 errcheck_vreq<-function(com,comnull,vr)
 {

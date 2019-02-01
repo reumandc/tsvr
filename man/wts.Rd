@@ -22,6 +22,9 @@ X<-matrix(runif(200,1,100), 10, 20)
 ans<-wts(X)
 
 }
+\references{
+<Lei paper>
+}
 \author{
 Lei Zhao, \email{lei.zhao@cau.edu.cn}; Daniel Reuman, \email{reuman@ku.edu}
 }

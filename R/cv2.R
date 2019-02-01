@@ -10,20 +10,20 @@
 #' 
 #' @author Lei Zhao, \email{lei.zhao@@cau.edu.cn}; Daniel Reuman, \email{reuman@@ku.edu}; Shaopeng Wang, \email{shaopeng.wang@@pku.edu.cn}
 #' 
+#' @seealso \code{\link{vreq_classic}}, \code{\link{vreq_LdM}}, \code{\link{cv2f}}, \code{browseVignettes("tsvr")}
+#' 
 #' @examples
 #' X<-matrix(runif(200,1,100), 10, 20)
-#' rownames(X)<-letters[1:10]
-#' colnames(X)<-1991:2010
-#' 
 #' ans<-cv2(X, type="com")
 #' 
 #' @export
+#' @importFrom stats cov
 
 cv2 <- function(X, type){
   errcheck_data(X,"cv2")
   
   meanSp <- rowMeans(X)
-  covSp <- cov(t(X))
+  covSp <- stats::cov(t(X))
   mean.comm <- sum(meanSp)
   
   if(type=="com")

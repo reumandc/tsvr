@@ -65,7 +65,11 @@ slots of a \code{tsvreq} object.
 Set, get, summary, print and plot methods for the \code{tsvreq} class.
 }
 \examples{
-add later
+res<-tsvreq(ts=1:10,com=2*c(1:10),comnull=1:10,tsvr=rep(2,10),wts=rep(3,10))
+get_ts(res)
+print(res)
+summary(res)
+plot(res)
  
 }
 \seealso{

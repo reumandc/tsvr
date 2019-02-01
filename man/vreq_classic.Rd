@@ -21,8 +21,16 @@ storing equations based on the classic variance ratio. Inherits from the \code{v
 which inherits from the \code{list} class.
 }
 \examples{
-#add later
+X<-matrix(runif(10*100),10,100)
+res<-vreq_classic(X)
 
+}
+\references{
+Peterson (1975) Stability of species and of community for the benthos of two lagoons. Ecology 56, 958-965.
+}
+\seealso{
+\code{\link{vreq_classic_methods}}, \code{\link{vreq}}, \code{\link{vreq_LdM}}, 
+\code{\link{vreq_classic_ag}}, \code{\link{browseVignettes("tsvr")}}
 }
 \author{
 Daniel Reuman, \email{reuman@ku.edu}

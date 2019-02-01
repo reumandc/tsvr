@@ -98,9 +98,8 @@ documentation for the generator functions for these classes (which in
 all cases have the same name as the class) for lists of slots for each 
 class.
 }
-\examples{
-Add later
-
+\seealso{
+\code{\link{vreq}}
 }
 \author{
 Daniel Reuman, \email{reuman@ku.edu}

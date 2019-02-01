@@ -20,7 +20,11 @@
 #' @seealso \code{\link{tsvreq}}
 #' 
 #' @examples
-#' add later
+#' res<-tsvreq(ts=1:10,com=2*c(1:10),comnull=1:10,tsvr=rep(2,10),wts=rep(3,10))
+#' get_ts(res)
+#' print(res)
+#' summary(res)
+#' plot(res)
 #'  
 #' @name tsvreq_methods
 NULL
@@ -93,6 +97,8 @@ print.tsvreq<-function(x,...)
 
 #' @rdname tsvreq_methods
 #' @export
+#' @importFrom graphics plot par rect lines axis mtext
+#' @importFrom grDevices dev.off pdf
 plot.tsvreq<-function(x,filename=NA,...)
 {
   #plot dimnsions, units inches
@@ -107,60 +113,58 @@ plot.tsvreq<-function(x,filename=NA,...)
   
   if (!(is.na(filename)))
   {
-    pdf(file=paste0(filename,".pdf"),width=totwd,height=totht)
+    grDevices::pdf(file=paste0(filename,".pdf"),width=totwd,height=totht)
   }
   
   #top panel - comnull
-  par(fig=c((ywd+numhtwd)/totwd,
+  graphics::par(fig=c((ywd+numhtwd)/totwd,
             (ywd+numhtwd+panwd)/totwd,
             (xht+numhtwd+3*(panht+gap))/totht,
             (xht+numhtwd+3*(panht+gap)+panht)/totht),
       mai=c(0,0,0,0),mgp=c(3,.15,0),tcl=-.25)
   xv<-x$ts
   yv<-x$comnull
-  plot(xv,yv,type='l',xaxt="n",ylab="comnull",...)
-  mtext("comnull",side=2,1)
-  #lablocs<-c(.25,.5,.75,1)
-  #lablabs<-round(1/lablocs,2)
-  axis(1,labels=FALSE)
+  graphics::plot(xv,yv,type='l',xaxt="n",ylab="comnull",...)
+  graphics::mtext("comnull",side=2,1)
+  graphics::axis(1,labels=FALSE)
   
   #next panel down - tsvr
-  par(fig=c((ywd+numhtwd)/totwd,
+  graphics::par(fig=c((ywd+numhtwd)/totwd,
             (ywd+numhtwd+panwd)/totwd,
             (xht+numhtwd+2*(panht+gap))/totht,
             (xht+numhtwd+2*(panht+gap)+panht)/totht),
       mai=c(0,0,0,0),mgp=c(3,.15,0),tcl=-.25,new=T)
   yv<-x$tsvr
-  plot(xv,yv,type='l',xaxt="n",...)
-  mtext("tsvr",side=2,1)
-  axis(1,labels=FALSE)
+  graphics::plot(xv,yv,type='l',xaxt="n",...)
+  graphics::mtext("tsvr",side=2,1)
+  graphics::axis(1,labels=FALSE)
   
   #next panel down - com
-  par(fig=c((ywd+numhtwd)/totwd,
+  graphics::par(fig=c((ywd+numhtwd)/totwd,
             (ywd+numhtwd+panwd)/totwd,
             (xht+numhtwd+1*(panht+gap))/totht,
             (xht+numhtwd+1*(panht+gap)+panht)/totht),
       mai=c(0,0,0,0),mgp=c(3,.15,0),tcl=-.25,new=T)
   yv<-x$com
-  plot(xv,yv,type='l',xaxt="n",...)
-  mtext("com",side=2,1)
-  axis(1,labels=FALSE)
+  graphics::plot(xv,yv,type='l',xaxt="n",...)
+  graphics::mtext("com",side=2,1)
+  graphics::axis(1,labels=FALSE)
   
   #bottom panel - wts
-  par(fig=c((ywd+numhtwd)/totwd,
+  graphics::par(fig=c((ywd+numhtwd)/totwd,
             (ywd+numhtwd+panwd)/totwd,
             (xht+numhtwd+0*(panht+gap))/totht,
             (xht+numhtwd+0*(panht+gap)+panht)/totht),
       mai=c(0,0,0,0),mgp=c(3,.15,0),tcl=-.25,new=T)
   yv<-x$wts
-  plot(xv,yv,type='l',xaxt="n",...)
-  mtext("wts",side=2,1)
-  mtext("Timescale",side=1,1)
-  axis(1)
+  graphics::plot(xv,yv,type='l',xaxt="n",...)
+  graphics::mtext("wts",side=2,1)
+  graphics::mtext("Timescale",side=1,1)
+  graphics::axis(1)
   
   if (!(is.na(filename)))
   {
-    dev.off()
+    grDevices::dev.off()
   }
 }
 

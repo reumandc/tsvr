@@ -54,11 +54,20 @@ slots of a \code{vreq_classic_ag} object.
 Set, get, summary, and print methods for the \code{vreq_classic_ag} class.
 }
 \examples{
-add later
+X<-matrix(runif(10*100),10,100)
+h<-tsvreq_classic(X)
+inp<-aggts(h,h$ts[h$ts>4])
+print(inp)
+summary(inp)
  
 }
+\references{
+<Add citation to Lei paper>
+}
 \seealso{
-\code{\link{aggts}}
+\code{\link{vreq_classic_ag}}, \code{\link{aggts}}, \code{\link{tsvreq_classic}}, 
+\code{\link{vreq_classic}}, \code{\link{vreq_LdM}}, \code{\link{vreq}}, 
+\code{\link{browseVignettes("tsvr")}}
 }
 \author{
 Daniel Reuman, \email{reuman@ku.edu}

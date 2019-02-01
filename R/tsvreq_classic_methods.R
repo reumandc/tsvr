@@ -21,7 +21,11 @@
 #' @seealso \code{\link{tsvreq_classic}}
 #' 
 #' @examples
-#' add later
+#' X<-matrix(runif(10*100),10,100)
+#' res<-tsvreq_classic(X)
+#' get_ts(res)
+#' print(res)
+#' summary(res)
 #'  
 #' @name tsvreq_classic_methods
 NULL
@@ -94,6 +98,8 @@ print.tsvreq_classic<-function(x,...)
 
 #' @rdname tsvreq_classic_methods
 #' @export
+#' @importFrom graphics plot par rect lines axis mtext
+#' @importFrom grDevices dev.off pdf
 plot.tsvreq_classic<-function(x,filename=NA,...)
 {
   #plot dimnsions, units inches
@@ -108,72 +114,72 @@ plot.tsvreq_classic<-function(x,filename=NA,...)
   
   if (!(is.na(filename)))
   {
-    pdf(file=paste0(filename,".pdf"),width=totwd,height=totht)
+    grDevices::pdf(file=paste0(filename,".pdf"),width=totwd,height=totht)
   }
   
   #top panel - comnull
-  par(fig=c((ywd+numhtwd)/totwd,
+  graphics::par(fig=c((ywd+numhtwd)/totwd,
             (ywd+numhtwd+panwd)/totwd,
             (xht+numhtwd+3*(panht+gap))/totht,
             (xht+numhtwd+3*(panht+gap)+panht)/totht),
       mai=c(0,0,0,0),mgp=c(3,.15,0),tcl=-.25)
   xv<-1/rev(x$ts)
   yv<-rev(x$comnull)
-  plot(xv,yv,type='n',xaxt="n",...)
+  graphics::plot(xv,yv,type='n',xaxt="n",...)
   d<-diff(range(yv))
   graphics::rect(.5,min(yv)-d,2,max(yv)+d,col='grey',border=NA)
-  lines(xv,yv,type='l',xaxt="n",...)
-  mtext(expression(CV[comip]^2),side=2,1)
+  graphics::lines(xv,yv,type='l',xaxt="n",...)
+  graphics::mtext(expression(CV[comip]^2),side=2,1)
   lablocs<-c(.25,.5,.75,1)
   lablabs<-round(1/lablocs,2)
-  axis(1,at=lablocs,labels=FALSE)
+  graphics::axis(1,at=lablocs,labels=FALSE)
 
   #next panel down - tsvr
-  par(fig=c((ywd+numhtwd)/totwd,
+  graphics::par(fig=c((ywd+numhtwd)/totwd,
             (ywd+numhtwd+panwd)/totwd,
             (xht+numhtwd+2*(panht+gap))/totht,
             (xht+numhtwd+2*(panht+gap)+panht)/totht),
       mai=c(0,0,0,0),mgp=c(3,.15,0),tcl=-.25,new=T)
   yv<-rev(x$tsvr)
-  plot(xv,yv,type='n',xaxt="n",...)
+  graphics::plot(xv,yv,type='n',xaxt="n",...)
   d<-diff(range(yv))
   graphics::rect(.5,min(yv)-d,2,max(yv)+d,col='grey',border=NA)
-  lines(xv,yv,type='l',xaxt="n",...)
-  mtext("tsvr",side=2,1)
-  axis(1,at=lablocs,labels=FALSE)
+  graphics::lines(xv,yv,type='l',xaxt="n",...)
+  graphics::mtext("tsvr",side=2,1)
+  graphics::axis(1,at=lablocs,labels=FALSE)
   
   #next panel down - com
-  par(fig=c((ywd+numhtwd)/totwd,
+  graphics::par(fig=c((ywd+numhtwd)/totwd,
             (ywd+numhtwd+panwd)/totwd,
             (xht+numhtwd+1*(panht+gap))/totht,
             (xht+numhtwd+1*(panht+gap)+panht)/totht),
       mai=c(0,0,0,0),mgp=c(3,.15,0),tcl=-.25,new=T)
   yv<-rev(x$com)
-  plot(xv,yv,type='n',xaxt="n",...)
+  graphics::plot(xv,yv,type='n',xaxt="n",...)
   d<-diff(range(yv))
   graphics::rect(.5,min(yv)-d,2,max(yv)+d,col='grey',border=NA)
-  lines(xv,yv,type='l',xaxt="n",...)
-  mtext(expression(CV[com]^2),side=2,1)
-  axis(1,at=lablocs,labels=FALSE)
+  graphics::lines(xv,yv,type='l',xaxt="n",...)
+  graphics::mtext(expression(CV[com]^2),side=2,1)
+  graphics::axis(1,at=lablocs,labels=FALSE)
   
   #bottom panel - wts
-  par(fig=c((ywd+numhtwd)/totwd,
+  graphics::par(fig=c((ywd+numhtwd)/totwd,
             (ywd+numhtwd+panwd)/totwd,
             (xht+numhtwd+0*(panht+gap))/totht,
             (xht+numhtwd+0*(panht+gap)+panht)/totht),
       mai=c(0,0,0,0),mgp=c(3,.15,0),tcl=-.25,new=T)
   yv<-rev(x$wts)
-  plot(xv,yv,type='n',xaxt="n",...)
+  graphics::plot(xv,yv,type='n',xaxt="n",...)
   d<-diff(range(yv))
   graphics::rect(.5,min(yv)-d,2,max(yv)+d,col='grey',border=NA)
-  lines(xv,yv,type='l',xaxt="n",...)
-  mtext("wts",side=2,1)
-  mtext("Timescale",side=1,1)
-  axis(1,at=lablocs,labels=lablabs)
+  graphics::lines(xv,yv,type='l',xaxt="n",...)
+  graphics::mtext("wts",side=2,1)
+  graphics::mtext("Timescale",side=1,1)
+  graphics::axis(1,at=lablocs,labels=lablabs)
   
   if (!(is.na(filename)))
   {
-    dev.off()
+    grDevices::dev.off()
   }
 }
 

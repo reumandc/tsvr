@@ -20,6 +20,12 @@ meet the requirements of a \code{vreq} object
 \description{
 Error check inputs for the creator function for the \code{vreq} class.
 }
+\examples{
+com<-2
+comnull<-2
+vr<-1
+errcheck(com,comnull,vr)
+}
 \author{
 Daniel Reuman, \email{reuman@ku.edu}
 }

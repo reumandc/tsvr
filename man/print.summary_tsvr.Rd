@@ -20,8 +20,15 @@ printing to the screen.
 Print method for \code{summary_tsvr} class
 }
 \examples{
-#Fill in later
+res<-vreq(2,1,2)
+summary(res)
 
+}
+\seealso{
+\code{\link{vreq_methods}}, \code{\link{vreq_classic_methods}}, 
+\code{\link{vreq_LdM_methods}}, \code{\link{vreq_classic_ag_methods}}, 
+\code{\link{tsvreq_methods}}, \code{\link{tsvreq_classic_methods}}, 
+\code{browseVignettes("tsvr")}
 }
 \author{
 Daniel Reuman, \email{reuman@ku.edu}

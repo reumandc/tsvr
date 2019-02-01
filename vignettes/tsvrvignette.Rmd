@@ -57,26 +57,25 @@ to calculate the classic variance ratio, and related quantities, after performin
 data preparation techniques. And usually that is not what has been done.
 
 # The classic variance ratio and related quantities
-
+\noindent add text
 
 # The Loreau-de Mazancourt variance ratio and related quantities
-
+\noindent add text
 
 # The timescale-specific classic variance ratio and related quntities
-
+\noindent add text
 
 # The lack of a timescale-specific Loreau-de Mazancourt variance ratio
-
+\noindent add text
 
 # Aggregating timescale-specific variance ratio and related quantities to timescale bands
-
+\noindent add text
 
 # Example using real data
-This could be an analysis of one plot from one site from the grassland data
+\noindent This could be an analysis of one plot from one site from the grassland data
 
 # Acknowlegements
-
-This material is based upon work supported by the National Science Foundation 
+\noindent This material is based upon work supported by the National Science Foundation 
 under grant numbers 17114195 and 1442595, and by the James S McDonnell Foundation. 
 Any opinions, findings, and conclusions 
 or recommendations expressed in this material are those of the authors and do 
@@ -85,3 +84,4 @@ We thank all
 users of the package who have reported or will later report ways in 
 which the package could be improved.
 
+# References

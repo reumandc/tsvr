@@ -21,6 +21,16 @@
 #' 
 #' @author Shaopeng Wang, \email{shaopeng.wang@@pku.edu.cn}; Lei Zhao, \email{lei.zhao@@cau.edu.cn}; Daniel Reuman, \email{reuman@@ku.edu}
 #' 
+#' @references 
+#' <add Lei's paper>
+#' 
+#' @seealso \code{\link{tsvreq_classic}}, \code{\link{vreq_classic_ag}}, \code{browseVignettes("tsvr")}
+#' 
+#' @examples 
+#' X<-matrix(runif(10*100),10,100)
+#' h<-tsvreq_classic(X)
+#' res<-aggts(h,h$ts[h$ts>4])
+#' 
 #' @export
 
 aggts<-function(obj,ts)

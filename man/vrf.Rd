@@ -22,6 +22,12 @@ X<-matrix(runif(200,1,100), 10, 20)
 ans<-vrf(X)
 
 }
+\references{
+<Lei's paper>
+}
+\seealso{
+\code{\link{vr}}
+}
 \author{
 Lei Zhao, \email{lei.zhao@cau.edu.cn}; Daniel Reuman, \email{reuman@ku.edu}
 }

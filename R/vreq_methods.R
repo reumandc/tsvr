@@ -19,7 +19,8 @@
 #' @seealso \code{\link{vreq}}
 #' 
 #' @examples
-#' add later
+#' res<-vreq(com=2,comnull=1,vr=2)
+#' print(res)
 #'  
 #' @name vreq_methods
 NULL
@@ -46,8 +47,10 @@ NULL
 #'
 #' @author Daniel Reuman, \email{reuman@@ku.edu}
 #'  
-#' @examples
-#' Add later
+#' @seealso \code{\link{vreq}}
+#' 
+#' @example
+#' set_com("test")
 #'
 #' @name setget_methods
 NULL

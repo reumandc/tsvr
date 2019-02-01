@@ -48,8 +48,14 @@ slots of a \code{vreq_classic} object.
 Set, get, summary, and print methods for the \code{vreq_classic} class.
 }
 \examples{
-add later
+X<-matrix(runif(10*100),10,100)
+res<-vreq_classic(X)
+print(res)
+summary(res)
  
+}
+\references{
+Peterson (1975) Stability of species and of community for the benthos of two lagoons. Ecology 56, 958-965.
 }
 \seealso{
 \code{\link{vreq_classic}}

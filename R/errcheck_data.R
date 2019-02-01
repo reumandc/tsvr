@@ -8,6 +8,10 @@
 #' meet the requirements
 #' 
 #' @author Daniel Reuman, \email{reuman@@ku.edu}
+#' 
+#' @examples 
+#' X<-matrix(runif(10*100),10,100)
+#' errcheck_data(X)
 
 errcheck_data<-function(X,calledby)
 {

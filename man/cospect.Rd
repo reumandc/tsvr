@@ -17,14 +17,14 @@ cospect(X)
 \description{
 This function is used to calculate the cospectrum.
 }
+\note{
+For internal use
+}
 \examples{
 X<-matrix(runif(200,1,100), 10, 20)
-rownames(X)<-letters[1:10]
-colnames(X)<-1991:2010
 ans<-cospect(X)
 
 }
 \author{
 Lei Zhao, \email{lei.zhao@cau.edu.cn}; Daniel Reuman, \email{reuman@ku.edu}
 }
-\keyword{internal}

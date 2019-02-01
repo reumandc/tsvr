@@ -12,6 +12,8 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Imports:
+    stats (>= 3.4.4),
+    graphics (>= 3.4.4)
 Suggests: 
     knitr,
     rmarkdown,

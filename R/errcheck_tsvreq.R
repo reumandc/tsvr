@@ -10,6 +10,14 @@
 #' meet the requirements of a \code{tsvreq} object
 #' 
 #' @author Daniel Reuman, \email{reuman@@ku.edu}
+#' 
+#' @examples 
+#' ts<-rep(1,10)
+#' com<-1:10
+#' comnull<-1:10
+#' tsvr<-2:11
+#' wts<-3:12
+#' errcheck_tsvreq(ts,com,comnull,tsvr,wts)
 
 errcheck_tsvreq<-function(ts,com,comnull,tsvr,wts)
 {

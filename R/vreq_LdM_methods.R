@@ -16,10 +16,16 @@
 #'  
 #' @author Daniel Reuman, \email{reuman@@ku.edu}
 #' 
+#' @references Loreau & Mazancourt, Species Synchrony and Its Drivers: Neutral and Nonneutral Community 
+#' Dynamics in Fluctuating Environments. 2008, Am. Nat. 172(2)
+#' 
 #' @seealso \code{\link{vreq_LdM}}
 #' 
 #' @examples
-#' add later
+#' X<-matrix(runif(10*100),10,100)
+#' res<-vreq_LdM(X)
+#' print(res)
+#' summary(res)
 #'  
 #' @name vreq_LdM_methods
 NULL

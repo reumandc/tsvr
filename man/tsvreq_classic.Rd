@@ -23,8 +23,13 @@ ratio) class is for storing functional equations based on a timescale specific v
 the classic variance ratio. Inherits from \code{tsvreq}, which inherits from \code{list}.
 }
 \examples{
-#add later
+X<-matrix(runif(10*100),10,100)
+res<-tsvreq_classic(X)
 
+}
+\seealso{
+\code{\link{tsvreq_classic_methods}}, \code{\link{tsvreq}}, \code{\link{vreq_classic}}, 
+\code{\link{browseVignettes("tsvr")}},
 }
 \author{
 Daniel Reuman, \email{reuman@ku.edu}

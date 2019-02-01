@@ -17,7 +17,7 @@ vreq(com, comnull, vr)
 \code{vreq} returns an object of class \code{vreq}. Slots are: 
 \item{com}{a single positive number equal to \code{comnull}*\code{vr}} 
 \item{comnull}{a single positive number}
-\item{values}{a single positive number}
+\item{vr}{a single positive number}
 }
 \description{
 The \code{vreq} (variance ratio equation) class is for storing equations based on a
@@ -28,6 +28,10 @@ inherits from the \code{list} class.
 }
 \references{
 Wang S. & Loreau M. (2016) Biodiversity and ecosystem stability across scales in metacommunities. Ecol Lett, 19, 510-518.
+}
+\seealso{
+\code{\link{vreq_methods}}, \code{\link{vreq_classic}}, \code{\link{vreq_LdM}}, 
+\code{\link{vreq_classic_ag}}, \code{\link{browseVignettes("tsvr")}}
 }
 \author{
 Shaopeng Wang, \email{shaopeng.wang@pku.edu.cn}; Lei Zhao, \email{lei.zhao@cau.edu.cn}; Daniel Reuman, \email{reuman@ku.edu}

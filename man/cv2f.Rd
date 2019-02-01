@@ -25,6 +25,9 @@ X<-matrix(runif(200,1,100), 10, 20)
 ans<-cv2f(X, type="com")
 
 }
+\seealso{
+\code{\link{tsvreq_classic}}, \code{\link{cv2}}, \code{browseVignettes("tsvr")}
+}
 \author{
 Shaopeng Wang, \email{shaopeng.wang@pku.edu.cn}; Lei Zhao, \email{lei.zhao@cau.edu.cn}; Daniel Reuman, \email{reuman@ku.edu}
 }

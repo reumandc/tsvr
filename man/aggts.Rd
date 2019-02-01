@@ -29,6 +29,18 @@ the same as a \code{vreq} object, but also has slot \code{ts}, which is the time
 over which aggregation was performed to get the object. The class inherits from \code{vreq},
 which inherits from \code{list}.
 }
+\examples{
+X<-matrix(runif(10*100),10,100)
+h<-tsvreq_classic(X)
+res<-aggts(h,h$ts[h$ts>4])
+
+}
+\references{
+<add Lei's paper>
+}
+\seealso{
+\code{\link{tsvreq_classic}}, \code{\link{vreq_classic_ag}}, \code{browseVignettes("tsvr")}
+}
 \author{
 Shaopeng Wang, \email{shaopeng.wang@pku.edu.cn}; Lei Zhao, \email{lei.zhao@cau.edu.cn}; Daniel Reuman, \email{reuman@ku.edu}
 }

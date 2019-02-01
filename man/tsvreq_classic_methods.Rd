@@ -66,7 +66,11 @@ slots of a \code{tsvreq_classic} object.
 Set, get, summary, print and plot methods for the \code{tsvreq_classic} class.
 }
 \examples{
-add later
+X<-matrix(runif(10*100),10,100)
+res<-tsvreq_classic(X)
+get_ts(res)
+print(res)
+summary(res)
  
 }
 \seealso{
