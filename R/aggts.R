@@ -24,7 +24,8 @@
 #' @references 
 #' <add Lei's paper>
 #' 
-#' @seealso \code{\link{tsvreq_classic}}, \code{\link{vreq_classic_ag}}, \code{browseVignettes("tsvr")}
+#' @seealso \code{\link{tsvreq_classic}}, \code{\link{vreq_classic_ag_methods}}, 
+#' \code{browseVignettes("tsvr")}
 #' 
 #' @examples 
 #' X<-matrix(runif(10*100),10,100)

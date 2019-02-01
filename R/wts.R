@@ -17,6 +17,7 @@
 #' ans<-wts(X)
 #' 
 #' @export
+#' @importFrom stats var
 
 wts<-function(X)
 {
@@ -25,7 +26,7 @@ wts<-function(X)
   cospec$frequency<-cospec$frequency[2:lenfreq]
   cospec$cospectrum<-cospec$cospectrum[,,2:lenfreq]
   
-  strength<-colSums(apply(cospec$cospectrum, 3, diag))/sum(apply(X, MARGIN=1, var))
+  strength<-colSums(apply(cospec$cospectrum, 3, diag))/sum(apply(X, MARGIN=1, stats::var))
 
   return(list(frequency=cospec$frequency, wts=strength))
 }

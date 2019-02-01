@@ -15,7 +15,7 @@
 #' Dynamics in Fluctuating Environments. 2008, Am. Nat. 172(2)
 #' 
 #' @seealso \code{\link{vrf}}, \code{\link{vreq}}, \code{\link{vreq_classic}}, \code{\link{vreq_LdM}},
-#' \code{\link{browseVignettes("tsvr")}}
+#' \code{browseVignettes("tsvr")}
 #' 
 #' @examples
 #' X<-matrix(runif(200,1,100), 10, 20)
@@ -23,6 +23,7 @@
 #' vr(X, method="classic")
 #' 
 #' @export
+#' @importFrom stats cov
 
 vr<-function(X, method="classic")
 {
@@ -31,7 +32,7 @@ vr<-function(X, method="classic")
   #Compute all the variances and covariances and arrange them into
   #a 2D array. At the end of these lines, covs(i1,i2)
   #should have the covariance of xi1 and xi2
-  covs<-cov(t(X))
+  covs<-stats::cov(t(X))
   
   #get the denominator
   if(method=="LdM")

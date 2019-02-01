@@ -20,7 +20,7 @@
 #' @references Wang S. & Loreau M. (2016) Biodiversity and ecosystem stability across scales in metacommunities. Ecol Lett, 19, 510-518.
 #' 
 #' @seealso \code{\link{vreq_methods}}, \code{\link{vreq_classic}}, \code{\link{vreq_LdM}}, 
-#' \code{\link{vreq_classic_ag}}, \code{\link{browseVignettes("tsvr")}} 
+#' \code{\link{vreq_classic_ag_methods}}, \code{browseVignettes("tsvr")} 
 #' 
 #' @example
 #' res<-vreq(com=2,comnull=1,vr=2)

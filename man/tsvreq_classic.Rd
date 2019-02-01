@@ -29,7 +29,7 @@ res<-tsvreq_classic(X)
 }
 \seealso{
 \code{\link{tsvreq_classic_methods}}, \code{\link{tsvreq}}, \code{\link{vreq_classic}}, 
-\code{\link{browseVignettes("tsvr")}},
+\code{browseVignettes("tsvr")}
 }
 \author{
 Daniel Reuman, \email{reuman@ku.edu}

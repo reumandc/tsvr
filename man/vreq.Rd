@@ -31,7 +31,7 @@ Wang S. & Loreau M. (2016) Biodiversity and ecosystem stability across scales in
 }
 \seealso{
 \code{\link{vreq_methods}}, \code{\link{vreq_classic}}, \code{\link{vreq_LdM}}, 
-\code{\link{vreq_classic_ag}}, \code{\link{browseVignettes("tsvr")}}
+\code{\link{vreq_classic_ag_methods}}, \code{browseVignettes("tsvr")}
 }
 \author{
 Shaopeng Wang, \email{shaopeng.wang@pku.edu.cn}; Lei Zhao, \email{lei.zhao@cau.edu.cn}; Daniel Reuman, \email{reuman@ku.edu}

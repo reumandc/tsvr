@@ -31,7 +31,7 @@ Dynamics in Fluctuating Environments. 2008, Am. Nat. 172(2)
 }
 \seealso{
 \code{\link{vrf}}, \code{\link{vreq}}, \code{\link{vreq_classic}}, \code{\link{vreq_LdM}},
-\code{\link{browseVignettes("tsvr")}}
+\code{browseVignettes("tsvr")}
 }
 \author{
 Lei Zhao, \email{lei.zhao@cau.edu.cn}; Daniel Reuman, \email{reuman@ku.edu}

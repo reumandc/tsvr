@@ -15,7 +15,8 @@
 #' ans<-cospect(X)
 #' 
 #' @note For internal use
-#' 
+#'
+#' @export 
 #' @importFrom stats fft
 
 cospect<-function(X)

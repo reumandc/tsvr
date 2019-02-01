@@ -39,7 +39,8 @@ res<-aggts(h,h$ts[h$ts>4])
 <add Lei's paper>
 }
 \seealso{
-\code{\link{tsvreq_classic}}, \code{\link{vreq_classic_ag}}, \code{browseVignettes("tsvr")}
+\code{\link{tsvreq_classic}}, \code{\link{vreq_classic_ag_methods}}, 
+\code{browseVignettes("tsvr")}
 }
 \author{
 Shaopeng Wang, \email{shaopeng.wang@pku.edu.cn}; Lei Zhao, \email{lei.zhao@cau.edu.cn}; Daniel Reuman, \email{reuman@ku.edu}

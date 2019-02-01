@@ -65,9 +65,9 @@ summary(inp)
 <Add citation to Lei paper>
 }
 \seealso{
-\code{\link{vreq_classic_ag}}, \code{\link{aggts}}, \code{\link{tsvreq_classic}}, 
+\code{\link{aggts}}, \code{\link{tsvreq_classic}}, 
 \code{\link{vreq_classic}}, \code{\link{vreq_LdM}}, \code{\link{vreq}}, 
-\code{\link{browseVignettes("tsvr")}}
+\code{browseVignettes("tsvr")}
 }
 \author{
 Daniel Reuman, \email{reuman@ku.edu}

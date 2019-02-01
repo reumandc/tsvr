@@ -24,7 +24,7 @@
 #' res<-tsvreq(ts=1:10,com=2*c(1:10),comnull=1:10,tsvr=rep(2,10),wts=rep(3,10))
 #' 
 #' @seealso \code{\link{tsvreq_methods}}, \code{\link{tsvreq_classic}}, \code{\link{vreq}}, 
-#' \code{\link{browseVignettes("tsvr")}}
+#' \code{browseVignettes("tsvr")}
 #' 
 #' @export
 

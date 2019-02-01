@@ -16,7 +16,7 @@
 #' @references Peterson (1975) Stability of species and of community for the benthos of two lagoons. Ecology 56, 958-965.
 #' 
 #' @seealso \code{\link{vreq_classic_methods}}, \code{\link{vreq}}, \code{\link{vreq_LdM}}, 
-#' \code{\link{vreq_classic_ag}}, \code{\link{browseVignettes("tsvr")}} 
+#' \code{\link{vreq_classic_ag_methods}}, \code{browseVignettes("tsvr")} 
 #' 
 #' @examples
 #' X<-matrix(runif(10*100),10,100)

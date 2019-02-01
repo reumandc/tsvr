@@ -19,10 +19,6 @@ meet the requirements
 \description{
 Error check a data matrix.
 }
-\examples{
-X<-matrix(runif(10*100),10,100)
-errcheck_data(X)
-}
 \author{
 Daniel Reuman, \email{reuman@ku.edu}
 }
