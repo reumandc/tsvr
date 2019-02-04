@@ -1,19 +1,20 @@
 Package: tsvr
 Version: 1.0.0
 Type: Package
-Title: Timescale-specific variance ratio for use in community ecology
+Title: Timescale-Specific Variance Ratio for Use in Community Ecology
 Authors@R: c(
     person("Daniel C.", "Reuman", email = "reuman@ku.edu", role = c("aut", "cre")),
     person("Lei", "Zhao", email = "lei.zhao@cau.edu.cn", role=c("aut")),
     person("Shaopeng", "Wang", email = "shaopeng.wang@pku.edu.cn", role=c("aut"))
     )
-Description: The package contains tools for timescale decomposition of the classic variance ratio of community ecology. Tools are as described in Zhao et al (in prep), extending commonly used methods introduced by Peterson et al (1975) doi: 10.23071/1936306.
+Description: Tools for timescale decomposition of the classic variance ratio of community ecology. Tools are as described in Zhao et al (in prep), extending commonly used methods introduced by Peterson et al (1975) doi: 10.23071/1936306.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Imports:
-    stats (>= 3.4.4),
-    graphics (>= 3.4.4)
+    graphics (>= 3.4.4),
+    grDevices (>= 3.4.4),
+    stats (>= 3.4.4)
 Suggests: 
     knitr,
     rmarkdown,
