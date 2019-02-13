@@ -19,6 +19,13 @@
 #' \item{vr}{the timescale-aggregated value of the classic variance ratio}
 #' \item{ts}{the timescales over which aggregation was performed}
 #' 
+#' @details Before aggregation is performed, the argument `ts` is intersected with the 
+#' canonical Fourier timescales greater than or equal to the Nyquist timescale, and the
+#' resulting timescales are then reflected about the Nyquist timescale. This is to 
+#' account for the symmetry of Fourier transforms about the Nyquist frequency. The
+#' `ts` slot of the output object shows the intersected, reflected timescales that were 
+#' actually used for aggregation. See the examples.
+#' 
 #' @author Shaopeng Wang, \email{shaopeng.wang@@pku.edu.cn}; Lei Zhao, \email{lei.zhao@@cau.edu.cn}; Daniel Reuman, \email{reuman@@ku.edu}
 #' 
 #' @references 
@@ -30,7 +37,11 @@
 #' @examples 
 #' X<-matrix(runif(10*100),10,100)
 #' h<-tsvreq_classic(X)
-#' res<-aggts(h,h$ts[h$ts>4])
+#' res1<-aggts(h,h$ts[h$ts>=4]) 
+#' res2<-aggts(h,h$ts[h$ts>=4 | h$ts<=4/3]) 
+#' #res1 and res2 produce the same result 
+#' #because of Fourier symmetry around the 
+#' #Nyquist timescale - see Details 
 #' 
 #' @export
 
@@ -42,14 +53,32 @@ aggts<-function(obj,ts)
     stop("Error in aggts: obj must be of class tsvreq_classic")
   }
   
-  #make sure ts is a subset of timescales in obj$ts
-  if (!all(ts %in% obj$ts))
+  #prepare ts
+  if (!is.numeric(ts))
   {
-    stop("Error in aggts: elements of ts must be in obj$ts")
+    stop("Error in aggts: ts must be a numeric vector")
   }
+  ts<-ts[ts %in% obj$ts[obj$ts>=2]] #intesect with canonical Fourier timescales
+  if (length(ts)==0)
+  {
+    stop("Error in aggts: elements of ts must be in obj$ts and >= 2")
+  }
+  #ts<-c(ts,1/(1-1/ts))
+  #ts<-sort(unique(ts))
+  T<-max(obj$ts) #length of the original time series
+  if (T %% 2 == 0) #even-length time series
+  {
+    midind<-T/2
+  }else #odd-length time series
+  {
+    midind<-T/2
+  }
+  inds<-which(obj$ts %in% ts)
+  inds<-round(sort(unique(c(-inds+2*midind,inds))))
+  ts<-obj$ts[inds]  
   
   #do the aggregating
-  inds<-which(obj$ts %in% ts)
+  #inds<-which(obj$ts %in% ts)
   com<-sum(obj$com[inds])
   comnull<-sum(obj$comnull[inds])
   vr<-sum(obj$wts[inds]*obj$tsvr[inds])/(sum(obj$wts[inds]))

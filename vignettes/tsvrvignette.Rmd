@@ -250,7 +250,7 @@ averaging over timescales (see below) or significance testing is performed.
 \noindent It is difficult to envision an analogous timescale-specific version of the Loreau-de
 Mazancourt approach. The quantity $\text{CV}_{\text{pop}}^2=\left(\sum_i \sqrt{\var_t (x_i(t))}\right)^2/(\mean_t(x_{\text{tot}}(t)))^2$
 cannot be decomposed by replacing the variances in the numerator by power spectra 
-because of the square and the square root. 
+because of the square root. 
 
 # Aggregating the timescale-specific classic variance ratio and related quantities to timescale bands
 \noindent If $\Omega$ is a set of timescales, and defining $\text{CV}_{\text{com}}^2(\Omega)=\sum_{\sigma \in \Omega} \text{CV}_{\text{com}}^2(\sigma)$,
@@ -263,7 +263,7 @@ timescales:
 
 ```{r agg_demo, echo=TRUE}
 res<-tsvreq_classic(d)
-aggresLong<-aggts(res,res$ts[res$ts>4])
+aggresLong<-aggts(res,res$ts[res$ts>=4])
 aggresShort<-aggts(res,res$ts[res$ts<4])
 class(aggresLong)
 names(aggresLong)
@@ -274,7 +274,23 @@ print(aggresShort)
 The `aggts` function is the generator function for the `vreq_classic_ag` class, which inherits
 from the `vreq` class and from `list`.
 
-# Acknowlegements
+Note that the best way to specify the timescales over which to aggregate is by 
+using conditions such as `aggts(res,res$ts[res$ts<4])`. If you type in timescales,
+e.g., `aggts(res,c(1.03,1.07,1.12))`, and the timescales do not match *exactly* with 
+timescales in `res$ts`, they will be removed. No error or warning will be triggered 
+unless there are no remaining timescales. The reason for this is, the code removes
+all timescales that are not among the canonical Fourier timescales less than
+$2$, the Nyquist timescale. Remaining timescales are then reflected about the Nyquist 
+timescale to account for the symmetry of Fourier transforms.
+This setup makes it possible to specify, say, aggregation over timescales less than 4 by
+`aggts(res,res$ts[res$ts<4])` instead of `aggts(res,res$ts[res$ts<4 & res$ts>4/3])` 
+(which gives the same results if run, but is inconvenient to type).
+In other words, only timescales greater than or equal to the Nyquist timescale (2) need 
+be specified in the argument `ts`,
+and the symmetric timescales on the other side of the Nyquist timescale are included
+automatically. See also the documentation for `aggts`.
+
+# Acknowledgements
 \noindent This material is based upon work supported by the National Science Foundation 
 under grant numbers 17114195 and 1442595, and by the James S McDonnell Foundation. 
 Any opinions, findings, and conclusions 
