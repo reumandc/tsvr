@@ -29,7 +29,8 @@
 #' @author Shaopeng Wang, \email{shaopeng.wang@@pku.edu.cn}; Lei Zhao, \email{lei.zhao@@cau.edu.cn}; Daniel Reuman, \email{reuman@@ku.edu}
 #' 
 #' @references 
-#' <add Lei's paper>
+#' Zhao et al, (In prep) Decomposition of the variance ratio illuminates timescale-specific
+#' population and community variability.
 #' 
 #' @seealso \code{\link{tsvreq_classic}}, \code{\link{vreq_classic_ag_methods}}, 
 #' \code{browseVignettes("tsvr")}
@@ -52,6 +53,7 @@ aggts<-function(obj,ts)
   {
     stop("Error in aggts: obj must be of class tsvreq_classic")
   }
+  errcheck_tsvreq(ts=obj$ts,com=obj$com,comnull=obj$comnull,tsvr=obj$tsvr,wts=obj$wts)
   
   #prepare ts
   if (!is.numeric(ts))
@@ -63,8 +65,6 @@ aggts<-function(obj,ts)
   {
     stop("Error in aggts: elements of ts must be in obj$ts and >= 2")
   }
-  #ts<-c(ts,1/(1-1/ts))
-  #ts<-sort(unique(ts))
   T<-max(obj$ts) #length of the original time series
   if (T %% 2 == 0) #even-length time series
   {
@@ -78,7 +78,6 @@ aggts<-function(obj,ts)
   ts<-obj$ts[inds]  
   
   #do the aggregating
-  #inds<-which(obj$ts %in% ts)
   com<-sum(obj$com[inds])
   comnull<-sum(obj$comnull[inds])
   vr<-sum(obj$wts[inds]*obj$tsvr[inds])/(sum(obj$wts[inds]))

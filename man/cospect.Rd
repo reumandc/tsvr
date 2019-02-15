@@ -2,7 +2,7 @@
 % Please edit documentation in R/cospect.R
 \name{cospect}
 \alias{cospect}
-\title{Calculate the cospectrum between all pairs (including pairs with itself)}
+\title{Calculate the cospectrum between all pairs of time series}
 \usage{
 cospect(X)
 }
@@ -15,10 +15,9 @@ cospect(X)
 \item{cospectrum}{a 3D array, with cospectrum range in species by species by frequency}
 }
 \description{
-This function is used to calculate the cospectrum.
-}
-\note{
-For internal use
+This function is used to calculate the cospectra between pairs of time series,
+including each time series with itself. These are based on simple ffts without
+smoothing.
 }
 \examples{
 X<-matrix(runif(200,1,100), 10, 20)

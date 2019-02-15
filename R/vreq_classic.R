@@ -13,7 +13,8 @@
 #' 
 #' @author Daniel Reuman, \email{reuman@@ku.edu}
 #'
-#' @references Peterson (1975) Stability of species and of community for the benthos of two lagoons. Ecology 56, 958-965.
+#' @references 
+#' Peterson (1975) Stability of species and of community for the benthos of two lagoons. Ecology 56, 958-965.
 #' 
 #' @seealso \code{\link{vreq_classic_methods}}, \code{\link{vreq}}, \code{\link{vreq_LdM}}, 
 #' \code{\link{vreq_classic_ag_methods}}, \code{browseVignettes("tsvr")} 
@@ -26,6 +27,8 @@
 
 vreq_classic<-function(X)
 {
+  errcheck_data(X,"vreq_classic")
+  
   vr_classic<-vr(X, method="classic")
   CVcom2<-cv2(X, type="com")
   CVcomip2<-cv2(X, type="comip")

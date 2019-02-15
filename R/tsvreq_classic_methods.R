@@ -18,6 +18,10 @@
 #'  
 #' @author Daniel Reuman, \email{reuman@@ku.edu}
 #' 
+#' @references 
+#' Zhao et al, (In prep) Decomposition of the variance ratio illuminates timescale-specific
+#' population and community variability.
+#' 
 #' @seealso \code{\link{tsvreq_classic}}
 #' 
 #' @examples

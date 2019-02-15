@@ -16,7 +16,8 @@
 #'  
 #' @author Daniel Reuman, \email{reuman@@ku.edu}
 #' 
-#' @references Peterson (1975) Stability of species and of community for the benthos of two lagoons. Ecology 56, 958-965.
+#' @references 
+#' Peterson (1975) Stability of species and of community for the benthos of two lagoons. Ecology 56, 958-965.
 #' 
 #' @seealso \code{\link{vreq_classic}}
 #' 

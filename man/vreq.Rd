@@ -28,6 +28,12 @@ inherits from the \code{list} class.
 }
 \references{
 Wang S. & Loreau M. (2016) Biodiversity and ecosystem stability across scales in metacommunities. Ecol Lett, 19, 510-518.
+
+Zhao et al, (In prep) Decomposition of the variance ratio illuminates timescale-specific
+population and community variability.
+
+Peterson, Stability of species and of community for the benthos of two lagoons. 1975,
+Ecology, 56, 958-965.
 }
 \seealso{
 \code{\link{vreq_methods}}, \code{\link{vreq_classic}}, \code{\link{vreq_LdM}}, 

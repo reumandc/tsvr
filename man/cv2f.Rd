@@ -10,7 +10,7 @@ cv2f(X, type)
 \item{X}{A matrix with counts or densities arranged in species by time step}
 
 \item{type}{If \code{com}, calculate a frequency-specific CVcom2. If \code{comip}, calculate a 
-frequency-specific CVcomip2.}
+frequency-specific CVcomip2. See the vignette for definitions of these quantities.}
 }
 \value{
 \code{cv2f} returns an object of type list consisting of
@@ -24,6 +24,10 @@ Compute a frequency-specific version of CVcom or CVcomip.
 X<-matrix(runif(200,1,100), 10, 20) 
 ans<-cv2f(X, type="com")
 
+}
+\references{
+Zhao et al, (In prep) Decomposition of the variance ratio illuminates timescale-specific
+population and community variability.
 }
 \seealso{
 \code{\link{tsvreq_classic}}, \code{\link{cv2}}, \code{browseVignettes("tsvr")}

@@ -29,14 +29,27 @@ the same as a \code{vreq} object, but also has slot \code{ts}, which is the time
 over which aggregation was performed to get the object. The class inherits from \code{vreq},
 which inherits from \code{list}.
 }
+\details{
+Before aggregation is performed, the argument `ts` is intersected with the 
+canonical Fourier timescales greater than or equal to the Nyquist timescale, and the
+resulting timescales are then reflected about the Nyquist timescale. This is to 
+account for the symmetry of Fourier transforms about the Nyquist frequency. The
+`ts` slot of the output object shows the intersected, reflected timescales that were 
+actually used for aggregation. See the examples.
+}
 \examples{
 X<-matrix(runif(10*100),10,100)
 h<-tsvreq_classic(X)
-res<-aggts(h,h$ts[h$ts>4])
+res1<-aggts(h,h$ts[h$ts>=4]) 
+res2<-aggts(h,h$ts[h$ts>=4 | h$ts<=4/3]) 
+#res1 and res2 produce the same result 
+#because of Fourier symmetry around the 
+#Nyquist timescale - see Details 
 
 }
 \references{
-<add Lei's paper>
+Zhao et al, (In prep) Decomposition of the variance ratio illuminates timescale-specific
+population and community variability.
 }
 \seealso{
 \code{\link{tsvreq_classic}}, \code{\link{vreq_classic_ag_methods}}, 

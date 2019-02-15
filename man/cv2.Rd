@@ -10,7 +10,7 @@ cv2(X, type)
 \item{X}{A matrix with counts or densities arranged in species by time step}
 
 \item{type}{If \code{pop}, calculate CVpop2. If \code{com}, calculate CVcom2. If \code{comip},
-calculate CVcomip2.}
+calculate CVcomip2. See the vignette for definitions of these quantities.}
 }
 \value{
 \code{cv2} returns the value of population or community variability.
@@ -22,6 +22,10 @@ Calculates various measures of population and community variability
 X<-matrix(runif(200,1,100), 10, 20)
 ans<-cv2(X, type="com")
 
+}
+\references{
+Zhao et al, (In prep) Decomposition of the variance ratio illuminates timescale-specific
+population and community variability.
 }
 \seealso{
 \code{\link{vreq_classic}}, \code{\link{vreq_LdM}}, \code{\link{cv2f}}, \code{browseVignettes("tsvr")}

@@ -21,6 +21,8 @@
 
 wts<-function(X)
 {
+  errcheck_data(X,"wts")
+  
   cospec<-cospect(X)
   lenfreq <- length(cospec$frequency)
   cospec$frequency<-cospec$frequency[2:lenfreq]

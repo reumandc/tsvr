@@ -4,13 +4,17 @@
 #' 
 #' @param X A matrix with counts or densities arranged in species by time step
 #' @param type If \code{pop}, calculate CVpop2. If \code{com}, calculate CVcom2. If \code{comip},
-#' calculate CVcomip2.
+#' calculate CVcomip2. See the vignette for definitions of these quantities.
 #'
 #' @return \code{cv2} returns the value of population or community variability.
 #' 
 #' @author Lei Zhao, \email{lei.zhao@@cau.edu.cn}; Daniel Reuman, \email{reuman@@ku.edu}; Shaopeng Wang, \email{shaopeng.wang@@pku.edu.cn}
 #' 
 #' @seealso \code{\link{vreq_classic}}, \code{\link{vreq_LdM}}, \code{\link{cv2f}}, \code{browseVignettes("tsvr")}
+#' 
+#' @references 
+#' Zhao et al, (In prep) Decomposition of the variance ratio illuminates timescale-specific
+#' population and community variability.
 #' 
 #' @examples
 #' X<-matrix(runif(200,1,100), 10, 20)

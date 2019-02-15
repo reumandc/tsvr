@@ -1,6 +1,8 @@
-#' Calculate the cospectrum between all pairs (including pairs with itself)
+#' Calculate the cospectrum between all pairs of time series
 #' 
-#' This function is used to calculate the cospectrum.
+#' This function is used to calculate the cospectra between pairs of time series,
+#' including each time series with itself. These are based on simple ffts without
+#' smoothing.
 #' 
 #' @param X a matrix with counts or densities arranged in species by time step.
 #'
@@ -14,8 +16,6 @@
 #' X<-matrix(runif(200,1,100), 10, 20)
 #' ans<-cospect(X)
 #' 
-#' @note For internal use
-#'
 #' @export 
 #' @importFrom stats fft
 
@@ -24,19 +24,20 @@ cospect<-function(X)
   errcheck_data(X,"cospect")
   
   tslength<-dim(X)[2] 
-  freqlen<-seq(from=0,by=1/tslength,length.out=tslength)
+  freqs<-seq(from=0,by=1/tslength,length.out=tslength)
   
-  cosp <- array(NA,dim=c(nrow(X), nrow(X), length(freqlen)))
+  allffts<-matrix(NA,nrow(X),ncol(X))
+  for (i in 1:nrow(X))
+  {
+    allffts[i,]<-stats::fft(X[i,])
+  }
+  
+  cosp <- array(NA,dim=c(nrow(X), nrow(X), tslength))
   for (i in 1:nrow(X)){
-    a <- X[i,]
-    ffta<-stats::fft(a)
     for (j in 1:nrow(X)){
-      b <- X[j,]
-      fftb<-stats::fft(b)
-      cospectrum<-(Re(Conj(ffta)*fftb))/tslength/(tslength-1)
-      
-      cosp[i,j,]<-cospectrum[1:length(freqlen)]
+      cosp[i,j,]<-(Re(Conj(allffts[i,])*allffts[j,]))/tslength/(tslength-1)
     }
   }
-  return(list(frequency=freqlen, cospectrum=cosp))
+  
+  return(list(frequency=freqs, cospectrum=cosp))
 }

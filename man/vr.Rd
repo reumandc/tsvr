@@ -28,6 +28,12 @@ vr(X, method="classic")
 \references{
 Loreau & Mazancourt, Species Synchrony and Its Drivers: Neutral and Nonneutral Community 
 Dynamics in Fluctuating Environments. 2008, Am. Nat. 172(2)
+
+Zhao et al, (In prep) Decomposition of the variance ratio illuminates timescale-specific
+population and community variability.
+
+Peterson, Stability of species and of community for the benthos of two lagoons. 1975,
+Ecology, 56, 958-965.
 }
 \seealso{
 \code{\link{vrf}}, \code{\link{vreq}}, \code{\link{vreq_classic}}, \code{\link{vreq_LdM}},

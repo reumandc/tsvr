@@ -27,13 +27,12 @@ vignette: >
 \newcommand{\cor}{\operatorname{cor}}
 
 The `tsvr` package provides an implementation of a timescale-specific extension and generalization of the variance ratio
-of [@Peterson_75]. The variance ratio is used commonly in community ecology. The extension
-implemented in the `tsvr` package was described in detail by [@Zhao_inprep]. The `tsvr` package supports that 
+of @Peterson_75. The variance ratio is used commonly in community ecology. The extension
+implemented in the `tsvr` package is described in detail by @Zhao_inprep. The `tsvr` package supports that 
 paper and provides an implemetation of
 the tools developed there for anyone to use. The mathematical formulas for the variance ratio and 
 extensions are detailed elsewhere 
-[@Peterson_75; @Hallett_14; @Zhao_inprep]. The mathematics are also outlined in brief in this
-vignette, but the main purpose of this vignette is to provide a decription of how to use the 
+[@Peterson_75; @Hallett_14; @Zhao_inprep]. The mathematics are also summarized here, but the main purpose of this vignette is to provide a decription of how to use the 
 `tsvr` package.
 
 # Preparing data  
@@ -42,7 +41,7 @@ of nonnegative numeric
 values where rows correspond to species in a community (so the number of species is $N$)
 and columns correspond to evenly spaced times during which sampling was conducted (so the
 number of times sampling was conducted is $T$). Matrix entries may be densities, or percent
-cover values, or biomasses, or other measures of abundance of the species. For instance:
+cover values for plant species within a quadrat, or biomasses, or other measures of abundance of the species. For instance:
 
 ```{r JRG_data, echo=TRUE}
 library(tsvr)
@@ -53,9 +52,10 @@ dim(d)
 ```
 
 Here `d` is a $26 \times 28$ matrix containing percent cover measurements for each year from
-$1983$ to $2010$ for 26 species which occurred in a 1 m$^2$ plot in Jasper Ridge Biological 
-Preserve serpentine grassland site. Species names are in the row names of $d$. This data set is
-`JRGdat` in the `tsvr` package. Documentation can be viewed via `?JRGdat`. See [@Hallett_14]
+$1983$ to $2010$ for 26 species which occurred in a 1 m$^2$ plot in the Jasper Ridge Biological 
+Preserve serpentine grassland site. Species names are in the row names of `JRGdat`, which is an
+example dataset embedded in the `tsvr` package. Documentation for the dataset 
+can be viewed via `?JRGdat`. See [@Hallett_14]
 for details of the Jasper Ridge ecosystem and of these and other related data.
 
 Standard implementations of Fourier transforms require time series consisting
@@ -79,9 +79,9 @@ The timescale-specific variance ratio techniques which are the focus of this pac
 use Fourier methods to decompose by timescale the classic 
 variance ratio and related quantities. Detrending and
 variance standardization across time series, techniques which are often
-applied before doing Fourier analysis, may not be approriate unless it makes sense 
-to calculate the classic variance ratio and related quantities after performing those
-techniques. It usually does not make sense.
+applied before doing Fourier analysis, may not be approriate except in cases for which
+it makes sense to calculate the classic variance ratio and related quantities after performing those
+techniques. 
 
 # The classic variance ratio and related quantities
 \noindent Let $x_i(t)$ be a measure of the population of species $i$ at time $t$, for 
@@ -93,23 +93,24 @@ represent variance and mean computed through time. This equals
 $\sum_{i,j} \cov_t(x_i(t),x_j(t))/(\mean_t(x_{\text{tot}}(t)))^2$, where $\cov_t$ is 
 covariance through time. The abbreviation "com" in $\text{CV}_{\text{com}}^2$
 stands for "community" since $\text{CV}_{\text{com}}^2$ is the squared coefficient of 
-variation of the whole-community population. Define $\text{CV}_{\text{com,ip}}^2$ to be the
+variation of the whole-community population. Define $\text{CV}_{\text{com\_ip}}^2$ to be the
 value of $\text{CV}_{\text{com}}^2$ that would pertain if the population dynamics of 
 different species were independent, so that $\cov_t(x_i(t),x_j(t))=0$ for all $i \neq j$.
 The abbreviation "ip" stands for "independent populations".
-Thus $\text{CV}_{\text{com,ip}}^2 = \sum_{i} \cov_t(x_i(t),x_i(t))/(\mean_t(x_{\text{tot}}(t)))^2 = 
+Thus $\text{CV}_{\text{com\_ip}}^2 = \sum_{i} \cov_t(x_i(t),x_i(t))/(\mean_t(x_{\text{tot}}(t)))^2 = 
 \sum_{i} \var_t(x_i(t))/(\mean_t(x_{\text{tot}}(t)))^2$. The classic variance ratio is defined as
-$\varphi=\text{CV}_{\text{com}}^2/\text{CV}_{\text{com,ip}}^2$, so that
-$\text{CV}_{\text{com}}^2=\varphi \text{CV}_{\text{com,ip}}^2$. A variance ratio greater than
+$\varphi=\text{CV}_{\text{com}}^2/\text{CV}_{\text{com\_ip}}^2$, so that
+$\text{CV}_{\text{com}}^2=\varphi \text{CV}_{\text{com\_ip}}^2$. A variance ratio greater than
 $1$ suggests "synchronous" dynamics of the species comprising the community, so that 
 community variability ($\text{CV}_{\text{com}}^2$) is greater than it would be if populations
-were independent ($\text{CV}_{\text{com,ip}}^2$). A variance ratio less than $1$ suggests
+were independent ($\text{CV}_{\text{com\_ip}}^2$). A variance ratio less than $1$ suggests
 "compensatory" dynamics of the species comprising the community (i.e., increases/decreases in 
 some species are partly compensated for by decreases/increases in others), so that community
 variability is less than it would be if populations were independent.
 
-The quantities $\text{CV}_{\text{com}}^2$, $\text{CV}_{\text{com,ip}}^2$ and $\varphi$ can be 
-computed using the `vreq_classic` function in the `tsvr` package:
+The quantities $\text{CV}_{\text{com}}^2$, $\text{CV}_{\text{com\_ip}}^2$ and $\varphi$ can be 
+computed using the `vreq_classic` function in the `tsvr` package, we here do so for the
+dataset `d` of the previous section, which we will continue to use throughout this vignette:
 
 ```{r vreq_classic_demo, echo=TRUE}
 res<-vreq_classic(d)
@@ -117,14 +118,14 @@ class(res)
 names(res)
 summary(res)
 print(res)
-res$com==res$comnull*res$vr
+all.equal(res$com,res$comnull*res$vr)
 ```
 
 The `vreq_classic` S3 class, of which `vreq_classic` is the generator function, 
 inherits from the generic S3 class `vreq` (generator function `vreq`) and the `list` class, 
-and has three slots `com`, 
+and has the three slots `com`, 
 `comnull`, and `vr`. These slots correspond to $\text{CV}_{\text{com}}^2$, 
-$\text{CV}_{\text{com,ip}}^2$ and 
+$\text{CV}_{\text{com\_ip}}^2$ and 
 $\varphi$. Both the `vreq` and `vreq_classic` classes have `print` and `summary` methods and 
 `set_*` and `get_*` methods where `*` represents any of the class slot names. See
 documentation for `vreq`, `vreq_classic`, `vreq_methods`, `vreq_classic_methods`, 
@@ -180,18 +181,18 @@ $\sum_\sigma \text{CV}_{\text{com}}^2(\sigma) = \text{CV}_{\text{com}}^2$, so
 $\text{CV}_{\text{com}}^2(\sigma)$ decomposes $\text{CV}_{\text{com}}^2$
 by timescale. $\text{CV}_{\text{com}}^2(\sigma)$ reveals to what extent variation on
 each timescale contributes to community variability.
-Likewise, $\text{CV}_{\text{com,ip}}^2 = \sum_{i} \var_t(x_i(t))/(\mean_t(x_{\text{tot}}(t)))^2$ 
+Likewise, $\text{CV}_{\text{com\_ip}}^2 = \sum_{i} \var_t(x_i(t))/(\mean_t(x_{\text{tot}}(t)))^2$ 
 can be decomposed by timescale as 
-$\text{CV}_{\text{com,ip}}^2(\sigma) = \sum_{i} s_{ii}(\sigma)/(\mean_t(x_{\text{tot}}(t)))^2$.
+$\text{CV}_{\text{com\_ip}}^2(\sigma) = \sum_{i} s_{ii}(\sigma)/(\mean_t(x_{\text{tot}}(t)))^2$.
 Finally, we define a timescale-specific version of the classic variance ratio as 
 the quotient of these two quantities, i.e., $\varphi_{ts}(\sigma)=\left( \sum_{i,j} s_{ij}(\sigma)  \right)/\left( \sum_i s_{ii}(\sigma)  \right)$, so that 
-$\text{CV}_{\text{com}}^2(\sigma) = \varphi_{ts}(\sigma) \text{CV}_{\text{com,ip}}^2(\sigma)$.
+$\text{CV}_{\text{com}}^2(\sigma) = \varphi_{ts}(\sigma) \text{CV}_{\text{com\_ip}}^2(\sigma)$.
 The timescale-specific variance ratio quantifies the extent to which species' oscillations are
 synchronous ($>1$) or compensatory ($<1$) on a timescale-by-timescale basis.
 For further details, see [@Zhao_inprep].
 
 The quantities $\text{CV}_{\text{com}}^2(\sigma)$, $\varphi_{ts}(\sigma)$ and 
-$\text{CV}_{\text{com,ip}}^2(\sigma)$ can be computed using the `tsvr` package:
+$\text{CV}_{\text{com\_ip}}^2(\sigma)$ can be computed using the `tsvr` package:
 
 ```{r tsvreq_classic_demo, echo=TRUE}
 res<-tsvreq_classic(d)
@@ -207,7 +208,7 @@ all.equal(sum(res$comnull),vreq_classic(d)$comnull)
 Here, `ts` is a vector of timescales ($T/(T-1),T/(T-2),\ldots,T/2,T$), 
 and the other elements are vectors of the same length
 containing timescale-specific information. The element `com` contains 
-$\text{CV}_{\text{com}}^2(\sigma)$, `comnull` contains $\text{CV}_{\text{com,ip}}^2(\sigma)$, and 
+$\text{CV}_{\text{com}}^2(\sigma)$, `comnull` contains $\text{CV}_{\text{com\_ip}}^2(\sigma)$, and 
 `tsvr` contains $\varphi_{ts}(\sigma)$. The `tsvreq_classic` S3 class
 inherits from the generic class `tsvreq` and from the `list` class.
 
@@ -230,8 +231,9 @@ all.equal(sum(res$wts*res$tsvr),res2$vr)
 The plot method for the `tsvreq_classic` class displays the various components as functions of
 timescale:
 
-```{r tsvreq_classic_demo_3, echo=TRUE}
-plot(res)
+```{r tsvreq_classic_demo_3, echo=TRUE, out.height="50%"}
+plot(res,filename="Tsvreq_classic_demo")
+knitr::include_graphics("Tsvreq_classic_demo.pdf")
 ```
 
 The plots are symmetric about the middle, because Fourier transforms of real-valued 
@@ -254,10 +256,10 @@ because of the square root.
 
 # Aggregating the timescale-specific classic variance ratio and related quantities to timescale bands
 \noindent If $\Omega$ is a set of timescales, and defining $\text{CV}_{\text{com}}^2(\Omega)=\sum_{\sigma \in \Omega} \text{CV}_{\text{com}}^2(\sigma)$,
-$\text{CV}_{\text{com,ip}}^2(\Omega)=\sum_{\sigma \in \Omega} \text{CV}_{\text{com,ip}}^2(\sigma)$,
+$\text{CV}_{\text{com\_ip}}^2(\Omega)=\sum_{\sigma \in \Omega} \text{CV}_{\text{com\_ip}}^2(\sigma)$,
 and $\bar{\varphi}_{ts}(\Omega)=\frac{\sum_{\sigma \in \Omega} \varphi_{ts}(\sigma) w(\sigma)}{\sum_{\sigma \in \Omega} w(\sigma)}$, it has been shown [@Zhao_inprep] that
-$\text{CV}_{\text{com}}^2(\Omega) = \bar{\varphi}_{ts}(\Omega) \text{CV}_{\text{com,ip}}^2(\Omega)$.
-Aggregating over timescales mitigates the jaggedness of results making use of unsmoothed Fourier 
+$\text{CV}_{\text{com}}^2(\Omega) = \bar{\varphi}_{ts}(\Omega) \text{CV}_{\text{com\_ip}}^2(\Omega)$.
+Aggregating over timescales mitigates the jaggedness resulting from unsmoothed Fourier 
 transforms (see above). The `tsvr` package provides tools for aggregating over any collection of 
 timescales:
 
@@ -284,7 +286,7 @@ $2$, the Nyquist timescale. Remaining timescales are then reflected about the Ny
 timescale to account for the symmetry of Fourier transforms.
 This setup makes it possible to specify, say, aggregation over timescales less than 4 by
 `aggts(res,res$ts[res$ts<4])` instead of `aggts(res,res$ts[res$ts<4 & res$ts>4/3])` 
-(which gives the same results if run, but is inconvenient to type).
+(which gives the same results if run, but is an inconvenient format with which to specify timescales).
 In other words, only timescales greater than or equal to the Nyquist timescale (2) need 
 be specified in the argument `ts`,
 and the symmetric timescales on the other side of the Nyquist timescale are included
@@ -292,10 +294,12 @@ automatically. See also the documentation for `aggts`.
 
 # Acknowledgements
 \noindent This material is based upon work supported by the National Science Foundation 
-under grant numbers 17114195 and 1442595, and by the James S McDonnell Foundation. 
+under grant numbers 17114195 and 1442595, by the James S McDonnell Foundation, and by a
+working group grant from the Long Term Ecological Research Network Communications
+Office of the National Center for Ecological Analysis and Synthesis.
 Any opinions, findings, and conclusions 
 or recommendations expressed in this material are those of the authors and do 
-not necessarily reflect the views of the National Science Foundation or the McDonnell Foundation. 
+not necessarily reflect the views of these funders. 
 We thank all 
 users of the package who have reported or will later report ways in 
 which the package could be improved.

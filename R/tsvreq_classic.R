@@ -19,6 +19,10 @@
 #' X<-matrix(runif(10*100),10,100)
 #' res<-tsvreq_classic(X)
 #' 
+#' @references 
+#' Zhao et al, (In prep) Decomposition of the variance ratio illuminates timescale-specific
+#' population and community variability.
+#' 
 #' @seealso \code{\link{tsvreq_classic_methods}}, \code{\link{tsvreq}}, \code{\link{vreq_classic}}, 
 #' \code{browseVignettes("tsvr")}
 #' 

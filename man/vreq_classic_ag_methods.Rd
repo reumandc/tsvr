@@ -62,7 +62,8 @@ summary(inp)
  
 }
 \references{
-<Add citation to Lei paper>
+Zhao et al, (In prep) Decomposition of the variance ratio illuminates timescale-specific
+population and community variability.
 }
 \seealso{
 \code{\link{aggts}}, \code{\link{tsvreq_classic}}, 

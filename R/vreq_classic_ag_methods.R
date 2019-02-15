@@ -16,7 +16,9 @@
 #'  
 #' @author Daniel Reuman, \email{reuman@@ku.edu}
 #' 
-#' @references <Add citation to Lei paper>
+#' @references 
+#' Zhao et al, (In prep) Decomposition of the variance ratio illuminates timescale-specific
+#' population and community variability.
 #' 
 #' @seealso \code{\link{aggts}}, \code{\link{tsvreq_classic}}, 
 #' \code{\link{vreq_classic}}, \code{\link{vreq_LdM}}, \code{\link{vreq}}, 

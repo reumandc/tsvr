@@ -22,6 +22,8 @@
 
 vrf<-function(X){
   
+  errcheck_data(X,"vrf")
+  
   #Compute all the cospectrum and arrange them into
   #a 3D array, species by species by frequency 
   cospec<-cospect(X)

@@ -13,7 +13,8 @@
 #' 
 #' @author Daniel Reuman, \email{reuman@@ku.edu}
 #'
-#' @references Loreau & Mazancourt, Species Synchrony and Its Drivers: Neutral and Nonneutral Community 
+#' @references 
+#' Loreau & Mazancourt, Species Synchrony and Its Drivers: Neutral and Nonneutral Community 
 #' Dynamics in Fluctuating Environments. 2008, Am. Nat. 172(2)
 #' 
 #' @seealso \code{\link{vreq_LdM_methods}}, \code{\link{vreq_classic}}, \code{\link{vreq}},
@@ -27,6 +28,8 @@
 
 vreq_LdM<-function(X)
 {
+  errcheck_data(X,"vreq_LdM")
+  
   vr_LdM<-vr(X, method="LdM")
   CVcom2<-cv2(X, type="com")
   CVpop2<-cv2(X, type="pop")
