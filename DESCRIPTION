@@ -7,7 +7,7 @@ Authors@R: c(
     person("Lei", "Zhao", email = "lei.zhao@cau.edu.cn", role=c("aut")),
     person("Shaopeng", "Wang", email = "shaopeng.wang@pku.edu.cn", role=c("aut"))
     )
-Description: Tools for timescale decomposition of the classic variance ratio of community ecology. Tools are as described in Zhao et al (in prep), extending commonly used methods introduced by Peterson et al (1975) <doi: 10.23071/1936306>.
+Description: Tools for timescale decomposition of the classic variance ratio of community ecology. Tools are as described in Zhao et al (in prep), extending commonly used methods introduced by Peterson et al (1975) <doi: 10.2307/1936306>.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
