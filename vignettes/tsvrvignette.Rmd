@@ -294,7 +294,7 @@ automatically. See also the documentation for `aggts`.
 
 # Acknowledgements
 \noindent This material is based upon work supported by the National Science Foundation 
-under grant numbers 17114195 and 1442595, by the James S McDonnell Foundation, and by a
+under grant numbers 1714195 and 1442595, by the James S McDonnell Foundation, and by a
 working group grant from the Long Term Ecological Research Network Communications
 Office of the National Center for Ecological Analysis and Synthesis.
 Any opinions, findings, and conclusions 
