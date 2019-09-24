@@ -1,5 +1,5 @@
 Package: tsvr
-Version: 1.0.0
+Version: 1.0.1
 Type: Package
 Title: Timescale-Specific Variance Ratio for Use in Community Ecology
 Authors@R: c(
