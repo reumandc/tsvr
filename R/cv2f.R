@@ -34,8 +34,9 @@ cv2f <- function(X, type){
   { 
     h<-cospect(matrix(totts,1,length(totts)))
     totspec<-h$cospectrum[1,1,2:(dim(h$cospectrum)[3])]
+    freq<-h$frequency[2:length(h$frequency)]
     cv2<-totspec/(mutot^2)
-    return(list(frequency=h$frequency,cv2=cv2))
+    return(list(frequency=freq,cv2=cv2))
   }
   if (type=="comip")
   {
@@ -47,7 +48,8 @@ cv2f <- function(X, type){
     }
     cv2<-apply(FUN=sum,X=allspects,MARGIN=2)
     cv2<-cv2/(mutot^2)
-    return(list(frequency=h$frequency,cv2=cv2))
+    freq<-h$frequency[2:length(h$frequency)]
+    return(list(frequency=freq,cv2=cv2))
   }
   
   stop("Error in cv2f: type must be com, comip")

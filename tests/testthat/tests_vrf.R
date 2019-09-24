@@ -67,5 +67,6 @@ test_that("test a specific case that created a bug in a previous version",{
                   "1991","2006","2005","1997","1996")
   res<-vrf(Xp)
   expect_true(all(res$vr>=0))
+  expect_equal(length(res$frequency),length(res$vr))
 })
 

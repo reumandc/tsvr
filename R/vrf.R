@@ -23,17 +23,21 @@
 vrf<-function(X){
   
   errcheck_data(X,"vrf")
+ 
+  #get the numerator
+  totts<-apply(FUN=sum,X=X,MARGIN=2)
+  h<-cospect(matrix(totts,1,length(totts)))
+  numer<-h$cospectrum[1,1,2:(dim(h$cospectrum)[3])]
+  freq<-h$frequency[2:length(h$frequency)]
   
-  #Compute all the cospectrum and arrange them into
-  #a 3D array, species by species by frequency 
-  cospec<-cospect(X)
-  lenfreq <- length(cospec$frequency)
-  cospec$frequency<-cospec$frequency[2:lenfreq]
-  cospec$cospectrum<-cospec$cospectrum[,,2:lenfreq]
+  #get the denominator
+  allspects<-matrix(NA,dim(X)[1],dim(X)[2]-1)
+  for (counter in 1:(dim(X)[1]))
+  {
+    h<-cospect(X[counter,,drop=FALSE])
+    allspects[counter,]<-h$cospectrum[1,1,2:(dim(h$cospectrum)[3])]
+  }
+  denom<-apply(FUN=sum,X=allspects,MARGIN=2)
   
-  vr.f <- apply(X=cospec$cospectrum, MARGIN=3, FUN=sum,na.rm=T)
-  D<-colSums(apply(cospec$cospectrum, 3, diag))
-  vr.f <- vr.f/D
-
-  return(list(frequency=cospec$frequency, vr=vr.f))
+  return(list(frequency=freq, vr=numer/denom))
 }

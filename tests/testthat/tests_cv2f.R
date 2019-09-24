@@ -63,4 +63,5 @@ test_that("test a specific case that created a bug in a previous version",{
                     "1991","2006","2005","1997","1996")
     res<-cv2f(Xp,"com")
     expect_true(all(res$cv2>=0))
+    expect_equal(length(res$frequency),length(res$cv2))
 })
