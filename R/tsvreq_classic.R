@@ -4,7 +4,7 @@
 #' ratio) class is for storing functional equations based on a timescale specific version of
 #' the classic variance ratio. Inherits from \code{tsvreq}, which inherits from \code{list}.
 #' 
-#' @param X a matrix with counts or densities arranged in species by years
+#' @param X a matrix with counts or densities arranged in species by time step
 #' 
 #' @return \code{tsvreq_classic} returns a \code{tsvreq_classic} object. Slots are:
 #' \item{ts}{a vector of timescales}

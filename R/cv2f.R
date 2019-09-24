@@ -27,26 +27,27 @@
 cv2f <- function(X, type){
   errcheck_data(X,"cv2f")
 
-  meanSp <- rowMeans(X)
-  cosp<-cospect(X)
-  freq<-cosp[[1]][-1]
-  covSp <- cosp[[2]][,,-1]  # cospectrum
-  mean.comm <- sum(meanSp)
+  totts<-apply(FUN=sum,MARGIN=2,X=X)
+  mutot<-mean(totts)
   
   if (type=="com")
-  {     
-    var.comm <- apply(covSp, 3, sum)
-    cv2 <- var.comm/mean.comm^2
-    return(list(frequency=freq,cv2=cv2))
+  { 
+    h<-cospect(matrix(totts,1,length(totts)))
+    totspec<-h$cospectrum[1,1,2:(dim(h$cospectrum)[3])]
+    cv2<-totspec/(mutot^2)
+    return(list(frequency=h$frequency,cv2=cv2))
   }
   if (type=="comip")
   {
-    cv2 <- apply(covSp, 3, function(x){
-      var.sp <- sum(diag(x))
-      cv2 <- var.sp/mean.comm^2   
-      return(cv2)
-    })
-    return(list(frequency=freq,cv2=cv2))
+    allspects<-matrix(NA,dim(X)[1],dim(X)[2]-1)
+    for (counter in 1:(dim(X)[1]))
+    {
+      h<-cospect(X[counter,,drop=FALSE])
+      allspects[counter,]<-h$cospectrum[1,1,2:(dim(h$cospectrum)[3])]
+    }
+    cv2<-apply(FUN=sum,X=allspects,MARGIN=2)
+    cv2<-cv2/(mutot^2)
+    return(list(frequency=h$frequency,cv2=cv2))
   }
   
   stop("Error in cv2f: type must be com, comip")
