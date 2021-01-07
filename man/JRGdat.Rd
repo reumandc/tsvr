@@ -4,9 +4,11 @@
 \name{JRGdat}
 \alias{JRGdat}
 \title{Percent cover data from Jasper Ridge Biological Preserve serpentine grassland site}
-\format{A data frame with 28 rows and 27 columns. First column is the year of 
+\format{
+A data frame with 28 rows and 27 columns. First column is the year of 
 measurement, subsequent columns correspond to individual species, named in the column
-headers.}
+headers.
+}
 \usage{
 JRGdat
 }
