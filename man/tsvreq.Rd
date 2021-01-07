@@ -31,6 +31,10 @@ functional equations based on a timescale-specific variance ratio. This is a gen
 from which other classes inherit (only \code{tsvreq_classic} at this point). \code{tsvreq} 
 inherits from the \code{list} class.
 }
+\examples{
+res<-tsvreq(ts=1:10,com=2*c(1:10),comnull=1:10,tsvr=rep(2,10),wts=rep(3,10))
+
+}
 \seealso{
 \code{\link{tsvreq_methods}}, \code{\link{tsvreq_classic}}, \code{\link{vreq}}, 
 \code{browseVignettes("tsvr")}

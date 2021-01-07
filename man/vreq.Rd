@@ -26,6 +26,10 @@ across scales in metacommunities, Ecol Lett, 19, 510-518. This is a general clas
 from which other classes inherit (\code{vreq_classic}, \code{vreq_LdM}). \code{vreq} 
 inherits from the \code{list} class.
 }
+\examples{
+res<-vreq(com=2,comnull=1,vr=2)
+  
+}
 \references{
 Wang S. & Loreau M. (2016) Biodiversity and ecosystem stability across scales in metacommunities. Ecol Lett, 19, 510-518.
 

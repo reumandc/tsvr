@@ -7,7 +7,7 @@
 tsvreq_classic(X)
 }
 \arguments{
-\item{X}{a matrix with counts or densities arranged in species by years}
+\item{X}{a matrix with counts or densities arranged in species by time step}
 }
 \value{
 \code{tsvreq_classic} returns a \code{tsvreq_classic} object. Slots are:

@@ -20,7 +20,7 @@
 #' 
 #' @author Shaopeng Wang, \email{shaopeng.wang@@pku.edu.cn}; Lei Zhao, \email{lei.zhao@@cau.edu.cn}; Daniel Reuman, \email{reuman@@ku.edu}
 #'
-#' @example 
+#' @examples 
 #' res<-tsvreq(ts=1:10,com=2*c(1:10),comnull=1:10,tsvr=rep(2,10),wts=rep(3,10))
 #' 
 #' @seealso \code{\link{tsvreq_methods}}, \code{\link{tsvreq_classic}}, \code{\link{vreq}}, 

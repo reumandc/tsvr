@@ -49,8 +49,9 @@ NULL
 #'  
 #' @seealso \code{\link{vreq}}
 #' 
-#' @example
-#' set_com("test")
+#' @examples
+#' res<-vreq(com=2,comnull=1,vr=2)
+#' get_com(res)
 #'
 #' @name setget_methods
 NULL

@@ -29,7 +29,7 @@
 #' @seealso \code{\link{vreq_methods}}, \code{\link{vreq_classic}}, \code{\link{vreq_LdM}}, 
 #' \code{\link{vreq_classic_ag_methods}}, \code{browseVignettes("tsvr")} 
 #' 
-#' @example
+#' @examples
 #' res<-vreq(com=2,comnull=1,vr=2)
 #'   
 #' @export
