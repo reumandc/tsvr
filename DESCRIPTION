@@ -20,5 +20,7 @@ Suggests:
     rmarkdown,
     testthat,
     vdiffr
-VignetteBuilder: knitr
+VignetteBuilder: 
+    knitr,
+    rmarkdown
 RoxygenNote: 7.1.0

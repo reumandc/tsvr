@@ -52,5 +52,5 @@ test_that("test the plot method",{
   inp<-tsvreq_classic(X)
   
   Test_plot_tsvreq_classic<-function(){plot(inp)}  
-  vdiffr::expect_doppelganger(title="Test-plot-tsvreq-classic",fig=Test_plot_tsvreq_classic)
+  expect_doppelganger(title="Test-plot-tsvreq-classic",fig=Test_plot_tsvreq_classic)
 })

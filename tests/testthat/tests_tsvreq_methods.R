@@ -49,6 +49,6 @@ test_that("test the plot method",{
   inp<-tsvreq(ts=1:10,com=c(10:1)*rep(2,10),comnull=rep(2,10),tsvr=10:1,wts=2*c(1:10))
   
   Test_plot_tsvreq<-function(){plot(inp)}  
-  vdiffr::expect_doppelganger(title="Test-plot-tsvreq",fig=Test_plot_tsvreq)
+  expect_doppelganger(title="Test-plot-tsvreq",fig=Test_plot_tsvreq)
 })
 
